@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Services;
+
+use Carbon\Carbon;
+use GuzzleHttp\Client as GuzzleClient;
+use Symfony\Component\DomCrawler\Crawler;
+
+class MetalArchives
+{
+    public static $base_url = 'https://www.metal-archives.com';
+    public static $band_discography_url = '/band/discography/id/%s/tab/all';
+
+    public function getBandDiscography($band_id)
+    {
+        $url = sprintf(self::$band_discography_url, $band_id);
+
+        $client = new GuzzleClient(['base_uri' => self::$base_url]);
+        $response = $client->get($url);
+
+        if (200 === $response->getStatusCode()) {
+            $this->parseBandDiscography((string) $response->getBody());
+        } else {
+            throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+        }
+    }
+
+    private function parseBandDiscography($html)
+    {
+        $crawler = new Crawler($html);
+
+        return $crawler->filter('tbody')->children('tr')->each(function($item) {
+            $album_properties = $item->children('td');
+
+            $permalink = $album_properties->eq(0)->children('a')->eq(0)->attr('href');
+            $title = trim($album_properties->eq(0)->children('a')->eq(0)->text());
+            $type = trim($album_properties->eq(1)->text());
+            $year = trim($album_properties->eq(2)->text());
+
+            return [
+                'permalink' => $permalink,
+                'title' => $title,
+                'type' => $type,
+                'year' => $year,
+            ];
+        });
+    }
+
+}
