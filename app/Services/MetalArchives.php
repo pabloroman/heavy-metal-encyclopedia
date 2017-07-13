@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use GuzzleHttp\Client as GuzzleClient;
 use Symfony\Component\DomCrawler\Crawler;
 
-
 class MetalArchives
 {
     public static $base_url = 'https://www.metal-archives.com';
@@ -31,7 +30,7 @@ class MetalArchives
     {
         $crawler = new Crawler($html);
 
-        return $crawler->filter('tbody')->children('tr')->each(function($item) {
+        return $crawler->filter('tbody')->children('tr')->each(function ($item) {
             $album_properties = $item->children('td');
 
             $permalink = $album_properties->eq(0)->children('a')->eq(0)->attr('href');
