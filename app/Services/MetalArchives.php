@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Client as GuzzleClient;
 use Symfony\Component\DomCrawler\Crawler;
 
+
 class MetalArchives
 {
     public static $base_url = 'https://www.metal-archives.com';
@@ -16,10 +17,11 @@ class MetalArchives
         $url = sprintf(self::$band_discography_url, $band_id);
 
         $client = new GuzzleClient(['base_uri' => self::$base_url]);
+
         $response = $client->get($url);
 
         if (200 === $response->getStatusCode()) {
-            $this->parseBandDiscography((string) $response->getBody());
+            return $this->parseBandDiscography((string) $response->getBody());
         } else {
             throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
         }
@@ -36,14 +38,29 @@ class MetalArchives
             $title = trim($album_properties->eq(0)->children('a')->eq(0)->text());
             $type = trim($album_properties->eq(1)->text());
             $year = trim($album_properties->eq(2)->text());
+            $id = $this->getAlbumId($permalink);
+            $image_url = $this->getAlbumImageUrl($id);
 
-            return [
-                'permalink' => $permalink,
-                'title' => $title,
-                'type' => $type,
-                'year' => $year,
-            ];
+            return compact('id', 'permalink', 'title', 'type', 'year', 'image_url');
         });
     }
 
+    private function getAlbumId($permalink)
+    {
+        $segments = explode('/', $permalink);
+
+        return $segments[sizeof($segments)-1];
+    }
+
+    private function getAlbumImageUrl($id)
+    {
+        return 'https://www.metal-archives.com/images/'.implode('/', str_split(substr($id, 0, 4)))."/".$id.".jpg";
+    }
+
+    private function getBandId($permalink)
+    {
+        $segments = explode('/', $permalink);
+
+        return $segments[sizeof($segments)-1];
+    }
 }
