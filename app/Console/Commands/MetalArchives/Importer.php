@@ -5,7 +5,7 @@ namespace App\Console\Commands\MetalArchives;
 use Illuminate\Console\Command;
 use Carbon\Carbon;
 use GuzzleHttp\Client as GuzzleClient;
-use App\Jobs\CreateReview;
+use App\Jobs\CreateModels;
 use App\Helpers\Parser;
 
 class Importer extends Command
@@ -80,7 +80,7 @@ class Importer extends Command
             foreach ($data as $review) {
                 $job = $this->parseReviewData($review);
                 $job['published_at'] = new Carbon($job['published_at'] . ' ' . $year);
-                dispatch(new CreateReview($job));
+                dispatch(new CreateModels($job));
             }
         } else {
             echo $response->getStatusCode();

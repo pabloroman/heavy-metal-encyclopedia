@@ -12,7 +12,7 @@ use App\Models\Review;
 use App\Models\Album;
 use App\Models\Band;
 
-class CreateReview implements ShouldQueue
+class CreateModels implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
