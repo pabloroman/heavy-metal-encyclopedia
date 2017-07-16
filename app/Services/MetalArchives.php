@@ -75,9 +75,9 @@ class MetalArchives
         $crawler = new Crawler($html);
 
         $title = trim($crawler->filter('.reviewTitle')->text());
-        $content = trim($crawler->filter('.reviewContent')->text());
+        $body = trim($crawler->filter('.reviewContent')->text());
 
-        return compact('title', 'content');
+        return compact('title', 'body');
     }
 
     private function parseAlbum($html)
