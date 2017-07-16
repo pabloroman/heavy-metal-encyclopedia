@@ -39,6 +39,19 @@ class MetalArchives
         }
     }
 
+    public function getAlbum($url)
+    {
+        $client = new GuzzleClient(['base_uri' => self::$base_url]);
+
+        $response = $client->get($url);
+
+        if (200 === $response->getStatusCode()) {
+            return $this->parseAlbum((string) $response->getBody());
+        } else {
+            throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+        }
+    }
+
     private function parseBandDiscography($html)
     {
         $crawler = new Crawler($html);
@@ -65,6 +78,19 @@ class MetalArchives
         $content = trim($crawler->filter('.reviewContent')->text());
 
         return compact('title', 'content');
+    }
+
+    private function parseAlbum($html)
+    {
+        $crawler = new Crawler($html);
+
+        $title = $crawler->filter('.album_name')->text();
+        $image = $crawler->filter('#cover')->children('img')->attr('src');
+        $type = $crawler->filter('dl.float_left')->children('dd')->eq(1)->text();
+        $published_at = $crawler->filter('dl.float_left')->children('dd')->eq(3)->text();
+        $label = $crawler->filter('dl.float_right')->children('dd')->eq(1)->text();
+
+        return compact('title', 'image', 'type', 'published_at', 'label');
     }
 
     private function getAlbumId($permalink)
