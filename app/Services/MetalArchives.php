@@ -87,7 +87,7 @@ class MetalArchives
         $title = $crawler->filter('.album_name')->text();
         $image = $crawler->filter('#cover')->children('img')->attr('src');
         $type = $crawler->filter('dl.float_left')->children('dd')->eq(1)->text();
-        $published_at = $crawler->filter('dl.float_left')->children('dd')->eq(3)->text();
+        $published_at = Carbon::parse($crawler->filter('dl.float_left')->children('dd')->eq(3)->text());
         $label = $crawler->filter('dl.float_right')->children('dd')->eq(1)->text();
 
         return compact('title', 'image', 'type', 'published_at', 'label');
