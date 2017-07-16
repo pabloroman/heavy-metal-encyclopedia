@@ -18,4 +18,9 @@ class Review extends Model
         'author_id',
         'album_id',
     ];
+
+    public function album()
+    {
+        return $this->belongsTo(Album::class);
+    }
 }

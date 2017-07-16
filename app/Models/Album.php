@@ -23,4 +23,9 @@ class Album extends Model
     {
         return $this->belongsToMany(Band::class);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
