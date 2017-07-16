@@ -74,7 +74,7 @@ class MetalArchives
     {
         $crawler = new Crawler($html);
 
-        $title = trim($crawler->filter('.reviewTitle')->text());
+        $title = preg_replace('/ \- (\d+)\%$/', '${2}', trim($crawler->filter('.reviewTitle')->text()));
         $body = trim($crawler->filter('.reviewContent')->text());
 
         return compact('title', 'body');
