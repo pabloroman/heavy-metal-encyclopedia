@@ -15,5 +15,7 @@ class Album extends Model
         'published_at',
         'title',
         'image',
+        'type',
+        'label',
     ];
 }
