@@ -19,6 +19,10 @@ class Review extends Model
         'album_id',
     ];
 
+    protected $events = [
+        'created' => \App\Events\ReviewCreated::class,
+    ];
+
     public function album()
     {
         return $this->belongsTo(Album::class);

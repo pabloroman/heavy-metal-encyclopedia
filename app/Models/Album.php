@@ -19,6 +19,10 @@ class Album extends Model
         'label',
     ];
 
+    protected $events = [
+        'created' => \App\Events\AlbumCreated::class,
+    ];
+
     public function bands()
     {
         return $this->belongsToMany(Band::class);
