@@ -18,4 +18,9 @@ class Album extends Model
         'type',
         'label',
     ];
+
+    public function bands()
+    {
+        return $this->belongsToMany(Band::class);
+    }
 }
