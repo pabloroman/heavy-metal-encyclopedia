@@ -97,10 +97,11 @@ class Importer extends Command
     private function parseReviewData($data)
     {
         $date = $data[0];
-        $review = Parser::parseLink($data[1]);
-        $album = Parser::parseLink($data[3]);
+        $review = Parser::parseReviewLink($data[1]);
+        $bands = Parser::parseBandsLink($data[2]);
+        $album = Parser::parseAlbumLink($data[3]);
         $score = Parser::parseScore($data[4]);
-        $author = Parser::parseLink($data[5]);
+        $author = Parser::parseAuthorLink($data[5]);
 
         return [
             'published_at' => $date,
@@ -110,6 +111,7 @@ class Importer extends Command
             'score' => $score,
             'author' => $author['id'],
             'author_id' => $review['id'],
+            'bands' => $bands,
         ];
     }
 }
