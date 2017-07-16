@@ -35,6 +35,10 @@ class CreateModels implements ShouldQueue
      */
     public function handle()
     {
+        if (!$this->reviewData['album_id'] || !$this->reviewData['bands'][0]['id']) {
+            return;
+        }
+
         $album = Album::firstOrCreate(['id' => $this->reviewData['album_id']], ['permalink' => $this->reviewData['album_permalink']]);
         Review::firstOrCreate(['album_id' => $this->reviewData['album_id'], 'author_id' => $this->reviewData['author_id']], $this->reviewData);
 
