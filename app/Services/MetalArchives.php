@@ -73,13 +73,9 @@ class MetalArchives
             $album_properties = $item->children('td');
 
             $permalink = $album_properties->eq(0)->children('a')->eq(0)->attr('href');
-            $title = trim($album_properties->eq(0)->children('a')->eq(0)->text());
-            $type = trim($album_properties->eq(1)->text());
-            $year = trim($album_properties->eq(2)->text());
             $id = $this->getAlbumId($permalink);
-            $image_url = $this->getAlbumImageUrl($id);
 
-            return compact('id', 'permalink', 'title', 'type', 'year', 'image_url');
+            return compact('id', 'permalink');
         });
     }
 
@@ -127,11 +123,6 @@ class MetalArchives
         $segments = explode('/', $permalink);
 
         return $segments[sizeof($segments)-1];
-    }
-
-    private function getAlbumImageUrl($id)
-    {
-        return 'https://www.metal-archives.com/images/'.implode('/', str_split(substr($id, 0, 4)))."/".$id.".jpg";
     }
 
     private function getBandId($permalink)
