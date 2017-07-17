@@ -52,6 +52,19 @@ class MetalArchives
         }
     }
 
+    public function getBand($url)
+    {
+        $client = new GuzzleClient(['base_uri' => self::$base_url]);
+
+        $response = $client->get($url);
+
+        if (200 === $response->getStatusCode()) {
+            return $this->parseBand((string) $response->getBody());
+        } else {
+            throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+        }
+    }
+
     private function parseBandDiscography($html)
     {
         $crawler = new Crawler($html);
@@ -91,6 +104,22 @@ class MetalArchives
         $label = $crawler->filter('dl.float_right')->children('dd')->eq(1)->text();
 
         return compact('title', 'image', 'type', 'published_at', 'label');
+    }
+
+    private function parseBand($html)
+    {
+        $crawler = new Crawler($html);
+
+        $name = $crawler->filter('.band_name')->text();
+        $logo = $crawler->filter('#logo')->children('img')->attr('src');
+        $image = $crawler->filter('#photo')->children('img')->attr('src');
+        $country = $crawler->filter('dl.float_left')->children('dd')->eq(1)->text();
+        $status = $crawler->filter('dl.float_left')->children('dd')->eq(5)->text();
+        $founded_at = $crawler->filter('dl.float_left')->children('dd')->eq(7)->text();
+        $genre = $crawler->filter('dl.float_right')->children('dd')->eq(1)->text();
+        $lyrical_themes = $crawler->filter('dl.float_right')->children('dd')->eq(3)->text();
+
+        return compact('name', 'logo', 'image', 'country', 'status', 'founded_at', 'genre', 'lyrical_themes');
     }
 
     private function getAlbumId($permalink)
