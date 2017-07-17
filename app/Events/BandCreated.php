@@ -26,7 +26,7 @@ class BandCreated
         $bandDiscography = (new MetalArchives())->getBandDiscography($band->id);
 
         foreach ($bandDiscography as $albumInfo) {
-            $album = Album::firstOrCreate($albumInfo);
+            $album = Album::firstOrCreate(['id' => $albumInfo['id']], ['permalink' => $albumInfo['permalink']]);
             if (!$album->bands->contains($band->id)) {
                 $album->bands()->attach($band->id);
             }
