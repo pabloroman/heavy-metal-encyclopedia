@@ -12,75 +12,49 @@ class MetalArchives
     public static $base_url = 'https://www.metal-archives.com';
     public static $band_discography_url = '/band/discography/id/%s/tab/all';
 
-    public function getBandDiscography($band_id)
+    private function getUrl($url, $type)
     {
-        $url = sprintf(self::$band_discography_url, $band_id);
-        if (Storage::exists('band_discography/' . urlencode($url))) {
-            $page = Storage::get('band_discography/' . urlencode($url));
+        if (Storage::exists($type . '/' . urlencode($url))) {
+            $page = Storage::get($type . '/' . urlencode($url));
         } else {
             $client = new GuzzleClient(['base_uri' => self::$base_url]);
             $response = $client->get($url);
             if (200 === $response->getStatusCode()) {
                 $page = (string) $response->getBody();
-                Storage::put('band_discography/' . urlencode($url), $page);
+                Storage::put($type . '/' . urlencode($url), $page);
             } else {
                 throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
             }
         }
+
+        return $page;
+    }
+
+    public function getBandDiscography($band_id)
+    {
+        $url = sprintf(self::$band_discography_url, $band_id);
+        $page = $this->getUrl($url, 'band_discography');
 
         return $this->parseBandDiscography($page);
     }
 
     public function getReview($url)
     {
-        if (Storage::exists('reviews/' . urlencode($url))) {
-            $page = Storage::get('reviews/' . urlencode($url));
-        } else {
-            $client = new GuzzleClient(['base_uri' => self::$base_url]);
-            $response = $client->get($url);
-            if (200 === $response->getStatusCode()) {
-                $page = (string) $response->getBody();
-                Storage::put('reviews/' . urlencode($url), $page);
-            } else {
-                throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
-            }
-        }
+        $page = $this->getUrl($url, 'reviews');
 
         return $this->parseReview($page);
     }
 
     public function getAlbum($url)
     {
-        if (Storage::exists('albums/' . urlencode($url))) {
-            $page = Storage::get('albums/' . urlencode($url));
-        } else {
-            $client = new GuzzleClient(['base_uri' => self::$base_url]);
-            $response = $client->get($url);
-            if (200 === $response->getStatusCode()) {
-                $page = (string) $response->getBody();
-                Storage::put('albums/' . urlencode($url), $page);
-            } else {
-                throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
-            }
-        }
+        $page = $this->getUrl($url, 'albums');
 
         return $this->parseAlbum($page);
     }
 
     public function getBand($url)
     {
-        if (Storage::exists('bands/' . urlencode($url))) {
-            $page = Storage::get('bands/' . urlencode($url));
-        } else {
-            $client = new GuzzleClient(['base_uri' => self::$base_url]);
-            $response = $client->get($url);
-            if (200 === $response->getStatusCode()) {
-                $page = (string) $response->getBody();
-                Storage::put('bands/' . urlencode($url), $page);
-            } else {
-                throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
-            }
-        }
+        $page = $this->getUrl($url, 'bands');
 
         return $this->parseBand($page);
     }
