@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Storage;
 use Carbon\Carbon;
 use GuzzleHttp\Client as GuzzleClient;
 use Symfony\Component\DomCrawler\Crawler;
@@ -14,55 +15,74 @@ class MetalArchives
     public function getBandDiscography($band_id)
     {
         $url = sprintf(self::$band_discography_url, $band_id);
-
-        $client = new GuzzleClient(['base_uri' => self::$base_url]);
-
-        $response = $client->get($url);
-
-        if (200 === $response->getStatusCode()) {
-            return $this->parseBandDiscography((string) $response->getBody());
+        if (Storage::exists('band_discography/' . urlencode($url))) {
+            $page = Storage::get('band_discography/' . urlencode($url));
         } else {
-            throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+            $client = new GuzzleClient(['base_uri' => self::$base_url]);
+            $response = $client->get($url);
+            if (200 === $response->getStatusCode()) {
+                $page = (string) $response->getBody();
+                Storage::put('band_discography/' . urlencode($url), $page);
+            } else {
+                throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+            }
         }
+
+        return $this->parseBandDiscography($page);
     }
 
     public function getReview($url)
     {
-        $client = new GuzzleClient(['base_uri' => self::$base_url]);
-
-        $response = $client->get($url);
-
-        if (200 === $response->getStatusCode()) {
-            return $this->parseReview((string) $response->getBody());
+        if (Storage::exists('reviews/' . urlencode($url))) {
+            $page = Storage::get('reviews/' . urlencode($url));
         } else {
-            throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+            $client = new GuzzleClient(['base_uri' => self::$base_url]);
+            $response = $client->get($url);
+            if (200 === $response->getStatusCode()) {
+                $page = (string) $response->getBody();
+                Storage::put('reviews/' . urlencode($url), $page);
+            } else {
+                throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+            }
         }
+
+        return $this->parseReview($page);
     }
 
     public function getAlbum($url)
     {
-        $client = new GuzzleClient(['base_uri' => self::$base_url]);
-
-        $response = $client->get($url);
-
-        if (200 === $response->getStatusCode()) {
-            return $this->parseAlbum((string) $response->getBody());
+        if (Storage::exists('albums/' . urlencode($url))) {
+            $page = Storage::get('albums/' . urlencode($url));
         } else {
-            throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+            $client = new GuzzleClient(['base_uri' => self::$base_url]);
+            $response = $client->get($url);
+            if (200 === $response->getStatusCode()) {
+                $page = (string) $response->getBody();
+                Storage::put('albums/' . urlencode($url), $page);
+            } else {
+                throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+            }
         }
+
+        return $this->parseAlbum($page);
     }
 
     public function getBand($url)
     {
-        $client = new GuzzleClient(['base_uri' => self::$base_url]);
-
-        $response = $client->get($url);
-
-        if (200 === $response->getStatusCode()) {
-            return $this->parseBand((string) $response->getBody());
+        if (Storage::exists('bands/' . urlencode($url))) {
+            $page = Storage::get('bands/' . urlencode($url));
         } else {
-            throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+            $client = new GuzzleClient(['base_uri' => self::$base_url]);
+            $response = $client->get($url);
+            if (200 === $response->getStatusCode()) {
+                $page = (string) $response->getBody();
+                Storage::put('bands/' . urlencode($url), $page);
+            } else {
+                throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+            }
         }
+
+        return $this->parseBand($page);
     }
 
     private function parseBandDiscography($html)
