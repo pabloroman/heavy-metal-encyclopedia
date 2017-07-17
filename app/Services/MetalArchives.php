@@ -94,7 +94,11 @@ class MetalArchives
         $crawler = new Crawler($html);
 
         $title = $crawler->filter('.album_name')->text();
-        $image = $crawler->filter('#cover')->children('img')->attr('src');
+        try {
+            $image = $crawler->filter('#cover')->children('img')->attr('src');
+        } catch (\Exception $e) {
+            $image = null;
+        }
         $type = $crawler->filter('dl.float_left')->children('dd')->eq(1)->text();
         $published_at = Carbon::parse($crawler->filter('dl.float_left')->children('dd')->eq(3)->text());
         $label = $crawler->filter('dl.float_right')->children('dd')->eq(1)->text();
@@ -107,8 +111,16 @@ class MetalArchives
         $crawler = new Crawler($html);
 
         $name = $crawler->filter('.band_name')->text();
-        $logo = $crawler->filter('#logo')->children('img')->attr('src');
-        $image = $crawler->filter('#photo')->children('img')->attr('src');
+        try {
+            $logo = $crawler->filter('#logo')->children('img')->attr('src');
+        } catch (\Exception $e) {
+            $logo = null;
+        }
+        try {
+            $image = $crawler->filter('#photo')->children('img')->attr('src');
+        } catch (\Exception $e) {
+            $image = null;
+        }
         $country = $crawler->filter('dl.float_left')->children('dd')->eq(1)->text();
         $status = $crawler->filter('dl.float_left')->children('dd')->eq(5)->text();
         $founded_at = $crawler->filter('dl.float_left')->children('dd')->eq(7)->text();
