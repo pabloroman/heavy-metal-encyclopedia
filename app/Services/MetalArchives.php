@@ -94,8 +94,9 @@ class MetalArchives
             $image = null;
         }
         $type = $crawler->filter('dl.float_left')->children('dd')->eq(1)->text();
-        $published_at = Carbon::parse($crawler->filter('dl.float_left')->children('dd')->eq(3)->text());
         $label = $crawler->filter('dl.float_right')->children('dd')->eq(1)->text();
+        $date = $crawler->filter('dl.float_left')->children('dd')->eq(3)->text();
+        $published_at = (strlen($date) == 4) ? Carbon::parse($date . '01-01') : Carbon::parse($date);
 
         return compact('title', 'image', 'type', 'published_at', 'label');
     }
