@@ -76,11 +76,14 @@ class Importer extends Command
             $results = json_decode((string) $response->getBody());
             $total = $results->iTotalRecords;
             echo "Total records: ". $total.PHP_EOL;
-            $data = $results->aaData;
-            foreach ($data as $review) {
-                $job = $this->parseReviewData($review);
-                $job['published_at'] = new Carbon($job['published_at'] . ' ' . $year);
-                dispatch(new CreateModels($job));
+
+            if (is_array($results->aaData) && !empty($results->aaData)) {
+                $data = $results->aaData;
+                foreach ($data as $review) {
+                    $job = $this->parseReviewData($review);
+                    $job['published_at'] = new Carbon($job['published_at'] . ' ' . $year);
+                    dispatch(new CreateModels($job));
+                }
             }
         } else {
             echo $response->getStatusCode();
