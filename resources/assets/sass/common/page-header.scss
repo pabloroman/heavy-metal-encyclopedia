@@ -1,0 +1,27 @@
+.page-header {
+    @include display-flex();
+    padding: 0;
+    margin: 0;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+
+    .flexy {
+        width: 100%;
+        @include align_items(center);
+
+        h1 {
+            margin: 0;
+        	font-size: 22px;
+        }
+
+        .text-muted {
+            display: none;
+        }
+
+        @media (min-width: $screen-sm-min) {
+            .text-muted {
+                display: inline;
+            }
+        }
+    }
+}

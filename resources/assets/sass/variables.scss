@@ -1,0 +1,103 @@
+// Primary theme colors
+$red: #ff675d;
+$midnight: #292e33;
+
+// Secondary colors
+$green: #4db85b;
+$greenalt: #6aba82;
+$blue: #4d68b8;
+
+// Text colors
+$black: #2f3030;
+$darkgrey: #48494a;
+$grey: #616363;
+$lightgrey: #babcbc; // lighten($text-color, 25%);
+$lightestgrey: #e3e5e5;
+$smoke: #f7f8fc;
+$white: #FFFFFF;
+
+// Social colors
+$twitter: #1da1f2;
+$facebook: #3b5998;
+$whatsapp: #43d854;
+
+// Body
+$body-bg: $white;
+
+// Borders
+$default-border-color: $smoke;
+$border-radius-base: 3px;
+$border-radius-large: $border-radius-base;
+$list-group-border: $default-border-color;
+$navbar-default-border: $default-border-color;
+$panel-default-border: $default-border-color;
+$panel-inner-border: $default-border-color;
+$hr-border: $smoke;
+
+// Tables
+$table-bg-accent: $smoke;
+$table-border-color: darken($default-border-color, 5%);
+
+// Nice success color: #73c86b
+// Brands
+$brand-primary: $blue;
+$brand-info: #8eb4cb;
+$brand-success: #6aba82;
+$brand-warning: #cbb956;
+$brand-danger:  #ffa940;
+
+// Typography
+$font-family-sans-serif: "Proxima Nova", sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.5;
+$text-color: $grey;
+$headings-color: $darkgrey;
+$headings-font-family: "Proxima Nova", sans-serif;
+$headings-font-weight: 300;
+$text-muted: $lightgrey;
+
+// Buttons
+$btn-default-color: $grey;
+$btn-border-radius-base: 3px;
+$btn-border-radius-large: 3px;
+$btn-border-radius-small: 3px;
+$btn-primary-border: transparent;
+
+// Inputs
+$input-border: lighten($grey, 40%);
+$input-border-focus: lighten($grey, 25%);
+$input-color-placeholder: lighten($grey, 30%);
+
+// Page header
+$page-header-border-color: $default-border-color;
+
+// Panels
+$panel-default-heading-bg: #fff;
+$panel-body-padding: 30px;
+
+// Navbar
+$navbar-height: 60px;
+$navbar-default-bg: $darkgrey;
+$navbar-border-radius: 0;
+$navbar-default-color: $white;
+$navbar-default-link-color: transparentize($white, 0.2);
+$navbar-default-link-hover-color: $white;
+$navbar-default-border: 0;
+$navbar-default-link-active-color: $white;
+$navbar-default-brand-color: $white;
+$navbar-margin-bottom: 30px;
+
+$nav-link-color: transparentize($white, 0.2);
+$nav-link-hover-bg: transparent;
+
+// Modal
+$modal-inner-padding: 20px;
+
+// Alerts
+$alert-padding: 8px;
+$alert-danger-bg: lighten($red, 28%);
+$alert-danger-text: $red;
+$alert-border-radius: 0;
+
+// Form states and alerts
+$state-danger-text: $brand-danger;

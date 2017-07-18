@@ -1,0 +1,42 @@
+.hero {
+
+    background: $midnight;
+    background-image: linear-gradient(45deg, rgba(50,50,84,0.82) 0%, rgba(71,39,58,0.92) 100%), url('../images/homepage-background.jpg');
+    background-size: cover;
+    background-position: 50%;
+    min-height: 100vh;
+
+    .container {
+        background: transparent;
+    }
+
+    &__tagline {
+        color: $white;
+        font-size: 48px;
+        margin-top: 60px;
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+
+    &__description {
+        color: transparentize($white, 0.5);
+        margin-bottom: 60px;
+    }
+
+    &__cta {
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        padding: 16px 32px;
+        font-weight: 700;
+
+        &.btn-primary {
+            &:active {
+                box-shadow: none;
+                background: $white;
+                &:hover {
+                    color: $brand-primary;
+                }
+            }
+        }
+    }
+}

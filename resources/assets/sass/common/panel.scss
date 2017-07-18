@@ -1,0 +1,7 @@
+.panel-body {
+    padding: $panel-body-padding/2;
+
+    @media (min-width: $screen-sm-min) {
+        padding: $panel-body-padding;
+    }
+}

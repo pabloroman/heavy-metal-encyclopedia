@@ -1,0 +1,15 @@
+.flexy {
+    @include display-flex();
+    @include justify-content(space-between);
+    @include align-items(center);
+
+    &.form-group {
+        .form-control {
+            margin-right: 5px;
+        }
+    }
+}
+
+.flexy-grow {
+    @include flex-grow(1);
+}

@@ -1,0 +1,125 @@
+.navbar {
+
+    border: 0;
+
+    &-brand {
+        color: $brand-primary;
+        font-weight: bold;
+        font-size: 28px;
+        letter-spacing: -2px;
+    }
+}
+
+.navbar-home {
+
+    .navbar-brand {
+        color: $white;
+    }
+
+    .navbar-nav {
+        a {
+            text-transform: uppercase;
+        }
+    }
+
+    .navbar-nav {
+        a {
+            color: transparentize($white, 0.3);
+            &:hover, &:active {
+                color: $white;
+            }
+        }
+    }
+
+    .navbar-toggle {
+
+        .icon-bar {
+            background: $white;
+        }
+    }
+}
+
+.navbar-admin {
+
+    background: $white;
+    margin-bottom: 0;
+    box-shadow: 0px 0 5px rgba(0,0,0,0.25);
+
+    .navbar-breadcrumb {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 16px;
+
+        .active {
+            a {
+                padding-left: 0;
+            }
+        }
+
+        .label {
+            position: relative;
+            top: -2px;
+            margin-left: 10px;
+        }
+
+        .dropdown {
+            &-button-wrapper {
+                padding: 1px 20px 5px;
+                .btn {
+                    @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+                }
+            }
+        }
+    }
+
+
+    .navbar-brand {
+        color: $lightgrey;
+        border-right: 1px solid $smoke;
+        border-left: 1px solid $smoke;
+
+        @media (min-width: $screen-sm-min) {
+            margin-left: 0 !important;
+        }
+        .fa {
+            position: relative;
+            top: -4px;
+        }
+    }
+
+    .navbar-toggle {
+
+        .icon-bar {
+            background: $midnight;
+        }
+    }
+
+    a {
+        color: $darkgrey;
+    }
+
+    .dropdown-user {
+
+        @include display_flex();
+        @include align_items(center);
+        min-height: $navbar-height;
+
+        &.open > a {
+            &,
+            &:hover,
+            &:focus {
+              border-color: $smoke;
+            }
+        }
+
+        &-link {
+            border-left: 1px solid $smoke;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        &-image {
+            margin-right: 2px;
+        }
+    }
+}
