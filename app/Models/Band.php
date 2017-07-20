@@ -30,4 +30,9 @@ class Band extends Model
     {
         return $this->belongsToMany(Album::class);
     }
+
+    public function getSlugAttribute()
+    {
+        return str_slug($this->name, '-');
+    }
 }

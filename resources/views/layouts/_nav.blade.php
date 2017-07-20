@@ -14,9 +14,10 @@
     </div>
 
     <div class="collapse navbar-collapse" id="main-nav">
-        <ul class="nav navbar-nav navbar-right">
-
-        </ul>
-    </div>
+        <form class="navbar-form navbar-right" action="{{ route('search') }}" method="get">
+            <div class="form-group">
+            <input class="form-control" placeholder="Search" type="text" name="q">
+            </div>
+        </form>
     </div>
 </nav>
