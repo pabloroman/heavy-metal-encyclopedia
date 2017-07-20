@@ -48,7 +48,7 @@
                             </li>
                             <li>
                                 <h4>Release date</h4>
-                                <p>{{ $album->published_at->format('F d Y') }}</p>
+                                <p>{{ $album->published_at->format('F jS, Y') }}</p>
                             </li>
                         </ul>
                     </div>
@@ -64,7 +64,7 @@
                 <h3>{{ $album->title }} reviews</h3>
                 @foreach($album->reviews as $review)
                     <h4>{{ $review->title }}</h4>
-                    <h5>By <a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F d Y') }}</h5>
+                    <h5>By <a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
                     <div>{!! $parser->nl2p($review->body) !!}</div>
                     <hr>
                 @endforeach
