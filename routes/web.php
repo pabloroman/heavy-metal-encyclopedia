@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/bands/{slug}/{band}', 'BandController@show')->name('showBand');
+Route::get('/albums/{slug}/{album}', 'AlbumController@show')->name('showAlbum');

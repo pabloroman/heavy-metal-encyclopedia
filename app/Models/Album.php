@@ -32,4 +32,9 @@ class Album extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function getSlugAttribute()
+    {
+        return str_slug($this->title, '-');
+    }
 }

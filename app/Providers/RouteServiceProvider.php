@@ -26,6 +26,9 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        Route::model('band', \App\Models\Band::class);
+        Route::model('album', \App\Models\Album::class);
     }
 
     /**

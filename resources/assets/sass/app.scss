@@ -10,6 +10,7 @@
 // Internal
 @import "internal/fonts";
 @import "internal/mixins";
+@import "internal/reset";
 
 // Common
 @import "common/body";
@@ -21,10 +22,12 @@
 @import "common/headings";
 @import "common/modal";
 @import "common/nav";
-@import "common/page-header";
 @import "common/panel";
 @import "common/type";
 @import "common/utils";
+
+// Components
+@import "components/header";
 
 // Pages
 @import "pages/homepage";

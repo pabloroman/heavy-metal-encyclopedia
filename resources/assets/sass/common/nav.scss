@@ -1,13 +1,18 @@
 .navbar {
 
     border: 0;
+    margin-bottom: 0;
 
     &-brand {
         color: $brand-primary;
         font-weight: bold;
-        font-size: 28px;
-        letter-spacing: -2px;
+        font-size: 21px;
+        letter-spacing: -.5px;
     }
+}
+
+.navbar-default {
+    background: $midnight;
 }
 
 .navbar-home {
