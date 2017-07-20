@@ -16,7 +16,7 @@
         @endif
         ></div>
 
-        <div class="container" style="position: relative">
+        <div class="container">
             <div class="flexy">
                 @if($band->image)
                 <div class="header-avatar">
@@ -51,7 +51,6 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>

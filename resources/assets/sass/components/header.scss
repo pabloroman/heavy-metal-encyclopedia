@@ -1,22 +1,37 @@
+$band-header-height: 200px;
+$album-header-height: 250px;
+
 .header {
     @include display-flex();
     padding: 0;
     margin: 0;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
+    margin-bottom: 60px;
+
+    .band-header & {
+        height: $band-header-height;
+    }
+
+    .album-header & {
+        height: $album-header-height;
+    }
+
     .flexy {
         width: 100%;
         @include align_items(flex-start);
         @include justify-content(flex-start);
+    }
+
+    .container {
+        position: relative;
     }
 }
 
 .header-background {
     position: absolute;
     width: 100%;
-    height: 200px;
     background-size: cover;
     background-position: center 20%;
+
     &:before {
         content: "";
         position: absolute;
@@ -27,23 +42,48 @@
         background-image: linear-gradient(45deg, rgba(50, 50, 84, 0.82) 0%, rgba(71, 39, 58, 0.92) 100%);
         background-position: top;
     }
+
+    .band-header & {
+        height: $band-header-height;
+    }
+
+    .album-header & {
+        height: $album-header-height;
+    }
 }
 
 .header-avatar {
     margin-top: 30px;
+    margin-right: 30px;
     &-wrapper {
-        width: 200px;
-        height: 200px;
-        border-radius: 100%;
+
         overflow: hidden;
         @include display-flex();
         @include align_items(center);
         @include justify-content(center);
+
         img {
-            max-height: 200px;
+            .band-header & {
+                max-height: $band-header-height;
+            }
+
+            .album-header & {
+                max-height: $album-header-height;
+            }
+        }
+
+        .band-header & {
+            height: $band-header-height;
+            width: $band-header-height;
+            border-radius: 100%;
+        }
+
+        .album-header & {
+            height: $album-header-height;
+            width: $album-header-height;
+            border-radius: 2px;
         }
     }
-    margin-right: 24px;
 }
 
 .header-content {
@@ -54,12 +94,19 @@
 .header-title-wrapper {
     @include display-flex();
     @include align-items(center);
-    margin-bottom: 14px;
 }
 
 .header-title {
     margin: 0;
-    float: left;
+    font-weight: bold;
+    color: $white;
+    a {
+        color: $white;
+    }
+}
+
+.header-subtitle {
+    margin: 0;
     font-weight: bold;
     color: $white;
     a {
@@ -77,6 +124,7 @@
 }
 
 .header-metadata {
+    margin-top: 14px;
     ul {
         list-style: none;
         @include display-flex();
