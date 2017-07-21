@@ -29,8 +29,8 @@
                 <div class="header-content">
                     <div class="header-title-wrapper">
                         <h1 class="header-title"><a href="{{ route('showAlbum', [$album->slug, $album->id]) }}">{{ $album->title }}</a></h1>
-                        @if($album->score)
-                        <span class="label header-label">{{ $album->score }}</span>
+                        @if($album->review_count)
+                        <span class="label header-label">{{ $album->median_score }}% ({{ $album->review_count }} {{ str_plural('review', $album->review_count) }})</span>
                         @endif
                     </div>
 
@@ -63,7 +63,7 @@
             <div class="col-md-8">
                 <h3>{{ $album->title }} reviews</h3>
                 @foreach($album->reviews as $review)
-                    <h4>{{ $review->title }}</h4>
+                    <h4>{{ $review->title }} - {{ $review->score }}%</h4>
                     <h5>By <a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
                     <div>{!! $parser->nl2p($review->body) !!}</div>
                     <hr>

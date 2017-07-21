@@ -68,7 +68,7 @@
                             <th>Type</th>
                             <th>Year</th>
                             <th>Label</th>
-                            <th>Reviews</th>
+                            <th>Rating</th>
                         </tr>
                     </thead>
                 @foreach($band->albums as $album)
@@ -77,7 +77,7 @@
                     <td>{{ $album->type }}</td>
                     <td>{{ $album->published_at->format('Y') }}</td>
                     <td>{{ $album->label }}</td>
-                    <td>{{ $album->reviews->count() }}</td>
+                    <td>@if($album->review_count) {{ $album->median_score }}% ({{ $album->review_count }} {{ str_plural('review', $album->review_count) }})@endif</td>
                 </tr>
                 @endforeach
                 <table>
