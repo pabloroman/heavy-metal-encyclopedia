@@ -15,7 +15,7 @@ class Importer extends Command
      *
      * @var string
      */
-    protected $signature = 'metal-archives:importer';
+    protected $signature = 'metal-archives:importer {--from=latest}';
 
     /**
      * The console command description.
@@ -43,7 +43,15 @@ class Importer extends Command
      */
     public function handle()
     {
-        $startDate = new Carbon('2002-07');
+        $from = $this->option('from');
+        if ($from == 'all') {
+            $startDate = new Carbon('2002-07');
+        } elseif ($from == 'latest') {
+            $startDate = Carbon::now();
+        } else {
+            $startDate = new Carbon($from);
+        }
+
         $endDate = Carbon::now();
         $pointer = $startDate;
 
