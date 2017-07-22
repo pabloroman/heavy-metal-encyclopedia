@@ -11302,17 +11302,34 @@ strong {
   padding: 0;
   margin: 0;
   margin-bottom: 60px;
-  height: 100px;
+  min-height: 100px;
+  background-color: #292e33;
 }
 
 .header .flexy {
   width: 100%;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .header .flexy {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
 }
 
 .header .container {
@@ -11320,16 +11337,16 @@ strong {
 }
 
 .band-header {
-  height: 200px;
+  min-height: 200px;
 }
 
 .album-header {
-  height: 250px;
+  min-height: 250px;
 }
 
 .header-background {
   position: absolute;
-  height: 100px;
+  min-height: 100px;
   width: 100%;
   background-size: cover;
   background-position: center 20%;
@@ -11347,16 +11364,22 @@ strong {
 }
 
 .band-header .header-background {
-  height: 200px;
+  min-height: 200px;
 }
 
 .album-header .header-background {
-  height: 250px;
+  min-height: 250px;
 }
 
 .header-avatar {
-  margin-top: 30px;
-  margin-right: 30px;
+  margin: 30px auto 0;
+}
+
+@media (min-width: 768px) {
+  .header-avatar {
+    margin-top: 30px;
+    margin-right: 30px;
+  }
 }
 
 .header-avatar-wrapper {
@@ -11445,13 +11468,31 @@ strong {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-left: 0;
 }
 
+@media (min-width: 768px) {
+  .header-metadata ul {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
 .header-metadata ul li {
-  float: left;
-  max-width: 25%;
   margin-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .header-metadata ul li {
+    float: left;
+    max-width: 25%;
+  }
 }
 
 .header-metadata ul li h4 {

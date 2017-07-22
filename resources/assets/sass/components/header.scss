@@ -6,12 +6,18 @@ $album-header-height: 250px;
     padding: 0;
     margin: 0;
     margin-bottom: 60px;
-    height: 100px;
+    min-height: 100px;
+    background-color: $midnight;
 
     .flexy {
         width: 100%;
-        @include align_items(flex-start);
+        @include align_items(center);
         @include justify-content(flex-start);
+        @include flex-direction(column);
+        @media (min-width: $screen-sm-min) {
+            @include flex-direction(row);
+            @include align_items(flex-start);
+        }
     }
 
     .container {
@@ -20,16 +26,16 @@ $album-header-height: 250px;
 }
 
 .band-header {
-    height: $band-header-height;
+    min-height: $band-header-height;
 }
 
 .album-header {
-    height: $album-header-height;
+    min-height: $album-header-height;
 }
 
 .header-background {
     position: absolute;
-    height: 100px;
+    min-height: 100px;
     width: 100%;
     background-size: cover;
     background-position: center 20%;
@@ -46,17 +52,20 @@ $album-header-height: 250px;
     }
 
     .band-header & {
-        height: $band-header-height;
+        min-height: $band-header-height;
     }
 
     .album-header & {
-        height: $album-header-height;
+        min-height: $album-header-height;
     }
 }
 
 .header-avatar {
-    margin-top: 30px;
-    margin-right: 30px;
+    margin: 30px auto 0;
+    @media (min-width: $screen-sm-min) {
+        margin-top: 30px;
+        margin-right: 30px;
+    }
     &-wrapper {
 
         overflow: hidden;
@@ -130,10 +139,17 @@ $album-header-height: 250px;
     ul {
         list-style: none;
         @include display-flex();
+        @include flex-direction(column);
         margin-left: 0;
+        @media (min-width: $screen-sm-min) {
+            @include flex-direction(row);
+        }
         li {
-            float: left;
-            max-width: 25%;
+
+            @media (min-width: $screen-sm-min) {
+                float: left;
+                max-width: 25%;
+            }
             margin-right: 24px;
             h4 {
                 color: transparentize($white, 0.4);
