@@ -1,10 +1,12 @@
 @extends('layouts.main')
 
-@section('content')
+@section('navigation')
 
 <div class="homepage">
 
     <section class="hero">
+
+    @include('layouts._nav', ['position' => 'home'])
 
     <div class="container">
         <div class="row">

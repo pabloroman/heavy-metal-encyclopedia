@@ -24,6 +24,8 @@
 
     </div>
 
+    <script src="{{ elixir('js/app.js') }}"></script>
+
     <!-- Scripts -->
     @yield('footer-scripts')
 
