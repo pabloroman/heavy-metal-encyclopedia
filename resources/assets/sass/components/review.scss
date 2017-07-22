@@ -1,0 +1,11 @@
+.review {
+    margin: 40px 0;
+
+    &-title {
+        font-weight: bold;
+    }
+
+    &-author {
+        color: $lightgrey;
+    }
+}

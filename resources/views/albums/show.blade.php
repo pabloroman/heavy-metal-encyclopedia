@@ -62,10 +62,12 @@
         <div class="row">
             <div class="col-md-8">
                 <h3>{{ $album->title }} reviews</h3>
-                @foreach($album->reviews as $review)
-                    <h4>{{ $review->title }} - {{ $review->score }}%</h4>
-                    <h5>By <a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
-                    <div>{!! $parser->nl2p($review->body) !!}</div>
+                @foreach($album->reviews->sortByDesc('published_at') as $review)
+                    <div class="review">
+                    <h4 class="review-title">{{ $review->title }} - {{ $review->score }}%</h4>
+                    <h5 class="review-author">By <a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
+                    <div class="review-content">{!! $parser->nl2p($review->body) !!}</div>
+                    </div>
                     <hr>
                 @endforeach
             </div>
