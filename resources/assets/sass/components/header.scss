@@ -5,9 +5,13 @@ $album-header-height: 250px;
     @include display-flex();
     padding: 0;
     margin: 0;
-    margin-bottom: 60px;
-    min-height: 100px;
+    height: 100%;
     background-color: $midnight;
+
+    @media (min-width: $screen-sm-min) {
+        margin-bottom: 60px;
+        min-height: 100px;
+    }
 
     .flexy {
         width: 100%;
@@ -26,11 +30,15 @@ $album-header-height: 250px;
 }
 
 .band-header {
-    min-height: $band-header-height;
+    @media (min-width: $screen-sm-min) {
+        height: $band-header-height;
+    }
 }
 
 .album-header {
-    min-height: $album-header-height;
+    @media (min-width: $screen-sm-min) {
+        height: $album-header-height;
+    }
 }
 
 .header-background {
@@ -149,13 +157,19 @@ $album-header-height: 250px;
             @media (min-width: $screen-sm-min) {
                 float: left;
                 max-width: 25%;
+                margin-right: 24px;
             }
-            margin-right: 24px;
+
             h4 {
                 color: transparentize($white, 0.4);
                 text-transform: uppercase;
                 font-size: 11px;
+                margin: 0;
+                @media (min-width: $screen-sm-min) {
+                    margin: 10px 0;
+                }
             }
+
             p {
                 color: $white;
                 font-weight: bold;

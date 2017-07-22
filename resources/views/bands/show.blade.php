@@ -61,26 +61,30 @@
         <div class="row">
 
             <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Year</th>
-                            <th>Label</th>
-                            <th>Rating</th>
-                        </tr>
-                    </thead>
-                @foreach($band->albums as $album)
-                <tr>
-                    <td><a href="{{ route('showAlbum', [$album->slug, $album->id]) }}">{{ $album->title }}</a></td>
-                    <td>{{ $album->type }}</td>
-                    <td>{{ $album->published_at->format('Y') }}</td>
-                    <td>{{ $album->label }}</td>
-                    <td>@if($album->review_count) {{ $album->median_score }}% ({{ $album->review_count }} {{ str_plural('review', $album->review_count) }})@endif</td>
-                </tr>
-                @endforeach
-                <table>
+                <h2>{{ $band->name }} discography</h2>
+
+                <div class="table-responsive">
+                    <table class="table album-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Year</th>
+                                <th>Label</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                    @foreach($band->albums as $album)
+                    <tr class="album-row album-row--is-{{ str_slug($album->type) }}">
+                        <td><a href="{{ route('showAlbum', [$album->slug, $album->id]) }}">{{ $album->title }}</a></td>
+                        <td>{{ $album->type }}</td>
+                        <td>{{ $album->published_at->format('Y') }}</td>
+                        <td>{{ $album->label }}</td>
+                        <td>@if($album->review_count) {{ $album->median_score }}% ({{ $album->review_count }} {{ str_plural('review', $album->review_count) }})@endif</td>
+                    </tr>
+                    @endforeach
+                    </table>
+                </div>
             </div>
         </div>
     </div>

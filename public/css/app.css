@@ -5176,15 +5176,15 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-toggle {
-  border-color: #ddd;
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #ddd;
+  background-color: #48494a;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #888;
+  background-color: #FFFFFF;
 }
 
 .navbar-default .navbar-collapse,
@@ -11091,10 +11091,18 @@ label {
   letter-spacing: -.5px;
 }
 
-.navbar-form {
-  margin-top: 0;
-  margin-bottom: 0;
-  border: 0;
+@media (max-width: 768px) {
+  .navbar-form {
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-form .form-control {
+    width: 280px;
+  }
 }
 
 .navbar-default {
@@ -11301,9 +11309,15 @@ strong {
   display: flex;
   padding: 0;
   margin: 0;
-  margin-bottom: 60px;
-  min-height: 100px;
+  height: 100%;
   background-color: #292e33;
+}
+
+@media (min-width: 768px) {
+  .header {
+    margin-bottom: 60px;
+    min-height: 100px;
+  }
 }
 
 .header .flexy {
@@ -11336,12 +11350,16 @@ strong {
   position: relative;
 }
 
-.band-header {
-  min-height: 200px;
+@media (min-width: 768px) {
+  .band-header {
+    height: 200px;
+  }
 }
 
-.album-header {
-  min-height: 250px;
+@media (min-width: 768px) {
+  .album-header {
+    height: 250px;
+  }
 }
 
 .header-background {
@@ -11484,14 +11502,11 @@ strong {
   }
 }
 
-.header-metadata ul li {
-  margin-right: 24px;
-}
-
 @media (min-width: 768px) {
   .header-metadata ul li {
     float: left;
     max-width: 25%;
+    margin-right: 24px;
   }
 }
 
@@ -11499,12 +11514,28 @@ strong {
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   font-size: 11px;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .header-metadata ul li h4 {
+    margin: 10px 0;
+  }
 }
 
 .header-metadata ul li p {
   color: #FFFFFF;
   font-weight: bold;
   font-size: 14px;
+}
+
+.album-row--is-full-length td:first-child {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.album-row--is-single td {
+  font-size: 12px;
 }
 
 .hero {

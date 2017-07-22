@@ -1,0 +1,20 @@
+.album-table {
+
+}
+
+.album-row {
+    &--is-full-length {
+        td {
+            &:first-child {
+                font-weight: bold;
+                font-size: 16px;
+            }
+        }
+    }
+
+    &--is-single {
+        td {
+            font-size: 12px;
+        }
+    }
+}
