@@ -28,7 +28,7 @@
                 @endif
                 <div class="header-content">
                     <div class="header-title-wrapper">
-                        <h1 class="header-title"><a href="{{ route('showAlbum', [$album->slug, $album->id]) }}">{{ $album->title }}</a></h1>
+                        <h1 class="header-title"><a href="{{ $album->permalink }}">{{ $album->title }}</a></h1>
                         @if($album->review_count)
                         <span class="label header-label">{{ $album->median_score }}% ({{ $album->review_count }} {{ str_plural('review', $album->review_count) }})</span>
                         @endif

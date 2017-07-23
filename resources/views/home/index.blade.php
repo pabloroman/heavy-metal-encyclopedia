@@ -30,10 +30,10 @@
                         <div class="grid">
                         @foreach($trendingAlbums as $album)
                         <div>
-                            <a href="{{ route('showAlbum', [$album->slug, $album->id]) }}">
+                            <a href="{{ $album->permalink }}">
                                 <img src="{{ $album->image }}" width="250">
                             </a>
-                            <h3><a href="{{ route('showAlbum', [$album->slug, $album->id]) }}">{{ $album->title }}</a></h3>
+                            <h3><a href="{{ $album->permalink }}">{{ $album->title }}</a></h3>
                             <h4>{{ $album->bandName }}</h4>
                         </div>
                         @endforeach

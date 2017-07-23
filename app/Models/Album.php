@@ -42,6 +42,11 @@ class Album extends Model
         return str_slug($this->title, '-');
     }
 
+    public function getPermalinkAttribute()
+    {
+        return route('showAlbum', [$this->slug, $this->id]);
+    }
+
     public function getBandNameAttribute()
     {
         return implode('/', $this->bands->pluck('name')->toArray());

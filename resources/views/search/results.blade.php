@@ -26,7 +26,7 @@
                 <h2>Bands</h2>
                 <ul>
                 @forelse($bands as $band)
-                    <li><a href="{{ route('showBand', [$band->slug, $band->id]) }}">{{ $band->name }}</a> ({{ $band->country }})</h3>
+                    <li><a href="{{ $band->permalink }}">{{ $band->name }}</a> ({{ $band->country }})</h3>
                 @empty
                     <li>No bands found matching your query</li>
                 @endforelse
@@ -36,7 +36,7 @@
                 <h2>Albums</h2>
                 <ul>
                 @forelse($albums as $album)
-                    <li><a href="{{ route('showAlbum', [$album->slug, $album->id]) }}">{{ $album->title }}</a></li>
+                    <li><a href="{{ $album->permalink }}">{{ $album->title }}</a></li>
                 @empty
                     No albums found matching your query
                 @endforelse

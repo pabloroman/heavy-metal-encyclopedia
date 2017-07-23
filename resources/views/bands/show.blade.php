@@ -27,7 +27,7 @@
                 @endif
                 <div class="header-content">
                     <div class="header-title-wrapper">
-                        <h1 class="header-title"><a href="{{ route('showBand', [$band->slug, $band->id]) }}">{{ $band->name }}</a></h1>
+                        <h1 class="header-title"><a href="{{ $band->permalink }}">{{ $band->name }}</a></h1>
                         <span class="label header-label-{{ str_slug($band->status) }} header-label">{{ $band->status }}</span>
                     </div>
 
@@ -76,7 +76,7 @@
                         </thead>
                     @foreach($band->albums as $album)
                     <tr class="album-row album-row--is-{{ str_slug($album->type) }}">
-                        <td><a href="{{ route('showAlbum', [$album->slug, $album->id]) }}">{{ $album->title }}</a></td>
+                        <td><a href="{{ $album->permalink }}">{{ $album->title }}</a></td>
                         <td>{{ $album->type }}</td>
                         <td>{{ $album->published_at->format('Y') }}</td>
                         <td>{{ $album->label }}</td>
