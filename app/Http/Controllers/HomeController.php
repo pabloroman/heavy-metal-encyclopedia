@@ -14,6 +14,8 @@ class HomeController extends Controller
         $bandCount = Band::count();
         $albumCount = Album::count();
         $reviewCount = Review::count();
-        return view('home.index', compact('bandCount', 'albumCount', 'reviewCount'));
+        $trendingAlbums = Album::getTrending();
+
+        return view('home.index', compact('bandCount', 'albumCount', 'reviewCount', 'trendingAlbums'));
     }
 }

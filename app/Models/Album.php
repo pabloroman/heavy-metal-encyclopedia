@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Album extends Model
 {
@@ -41,6 +42,11 @@ class Album extends Model
         return str_slug($this->title, '-');
     }
 
+    public function getBandNameAttribute()
+    {
+        return implode('/', $this->bands->pluck('name')->toArray());
+    }
+
     public function getReviewCount()
     {
         return $this->reviews->count();
@@ -69,5 +75,10 @@ class Album extends Model
         } else {
             return 0;
         }
+    }
+
+    public static function getTrending()
+    {
+        return self::where('published_at', '>=', Carbon::now()->subMonths(6))->orderBy('review_count', 'desc')->take(12)->get();
     }
 }
