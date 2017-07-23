@@ -47,9 +47,11 @@ class Album extends Model
         return route('showAlbum', [$this->slug, $this->id]);
     }
 
-    public function getBandNameAttribute()
+    public function getBandDetailsAttribute()
     {
-        return implode('/', $this->bands->pluck('name')->toArray());
+        return $this->bands->map(function ($band) {
+            return ['name' => $band->name, 'permalink' => $band->getPermalinkAttribute()];
+        });
     }
 
     public function getReviewCount()

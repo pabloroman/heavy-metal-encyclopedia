@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @inject('parser', 'App\Helpers\Parser')
+@inject('albumHelper', 'App\Helpers\Album')
 
 @section('navigation')
     @include('layouts._nav')
@@ -34,7 +35,9 @@
                         @endif
                     </div>
 
-                    <h2 class="header-subtitle">{{ implode('/', $album->bands->pluck('name')->toArray()) }}</h2>
+                    <h2 class="header-subtitle">
+                        {!! $albumHelper->bandLinks($album) !!}
+                    </h2>
 
                     <div class="header-metadata">
                         <ul>

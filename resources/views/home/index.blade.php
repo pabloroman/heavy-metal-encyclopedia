@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@inject('albumHelper', 'App\Helpers\Album')
+
 @section('navigation')
 
 <div class="homepage">
@@ -34,7 +36,7 @@
                                 <img src="{{ $album->image }}" width="250">
                             </a>
                             <h3><a href="{{ $album->permalink }}">{{ $album->title }}</a></h3>
-                            <h4>{{ $album->bandName }}</h4>
+                            <h4>{!! $albumHelper->bandLinks($album) !!}</h4>
                         </div>
                         @endforeach
                         </div>
