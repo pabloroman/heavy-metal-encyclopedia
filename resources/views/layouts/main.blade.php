@@ -22,6 +22,10 @@
     @section('footer')
     @show
 
+    <div class="container">
+        @include('layouts._footer')
+    </div>
+
     </div>
 
     <script src="{{ elixir('js/app.js') }}"></script>

@@ -10792,10 +10792,6 @@ ul, ol {
   list-style: none;
 }
 
-.app-body {
-  background: #f7f8fc;
-}
-
 .site-body {
   background: #FFFFFF;
 }
@@ -10997,6 +10993,13 @@ label {
 
 .button-group {
   padding: 30px 0;
+}
+
+.footer {
+  padding: 24px 0;
+  border-top: 1px solid #e3e5e5;
+  margin-top: 48px;
+  margin-bottom: 96px;
 }
 
 .row.row-grid [class*="col-"] + [class*="col-"] {

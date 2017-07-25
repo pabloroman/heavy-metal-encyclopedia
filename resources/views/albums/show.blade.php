@@ -67,11 +67,10 @@
                 <h3>{{ $album->title }} reviews</h3>
                 @forelse($album->reviews->sortByDesc('published_at') as $review)
                     <div class="review">
-                    <h4 class="review-title">{{ $review->title }} - {{ $review->score }}%</h4>
-                    <h5 class="review-author">By <a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
-                    <div class="review-content">{!! $parser->nl2p($review->body) !!}</div>
+                        <h4 class="review-title">{{ $review->title }} - {{ $review->score }}%</h4>
+                        <h5 class="review-author">By <a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
+                        <div class="review-content">{!! $parser->nl2p($review->body) !!}</div>
                     </div>
-                    <hr>
                 @empty
                 <div>There are no reviews yet</div>
                 @endforelse
