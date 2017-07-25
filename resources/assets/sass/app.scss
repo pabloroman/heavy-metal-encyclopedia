@@ -23,11 +23,13 @@
 @import "common/modal";
 @import "common/nav";
 @import "common/panel";
+@import "common/section";
 @import "common/type";
 @import "common/utils";
 
 // Components
 @import "components/header";
+@import "components/album-grid";
 @import "components/album-table";
 @import "components/review";
 

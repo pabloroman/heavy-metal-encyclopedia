@@ -84,8 +84,8 @@ class Album extends Model
         }
     }
 
-    public static function getTrending()
+    public static function getTrending($take = 10)
     {
-        return self::where('published_at', '>=', Carbon::now()->subMonths(6))->orderBy('review_count', 'desc')->take(12)->get();
+        return self::where('published_at', '>=', Carbon::now()->subMonths(6))->orderBy('review_count', 'desc')->take($take)->get();
     }
 }

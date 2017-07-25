@@ -23,23 +23,23 @@
 
     </section>
 
-    <section>
+    <section class="section">
         <div class="container">
-            <div class="content">
-                <h2>Trending albums</h2>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="grid">
-                        @foreach($trendingAlbums as $album)
-                        <div>
-                            <a href="{{ $album->permalink }}">
-                                <img src="{{ $album->image }}" width="250">
-                            </a>
-                            <h3><a href="{{ $album->permalink }}">{{ $album->title }}</a></h3>
-                            <h4>{!! $albumHelper->bandLinks($album) !!}</h4>
-                        </div>
-                        @endforeach
-                        </div>
+            <div class="section-title-wrapper">
+                <h2 class="section-title">Trending albums</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="grid album-grid-wrapper">
+                    @foreach($trendingAlbums as $album)
+                    <div class="album-grid">
+                        <a href="{{ $album->permalink }}">
+                            <img class="album-grid-image" src="{{ $album->image }}">
+                        </a>
+                        <h3 class="album-grid-title"><a href="{{ $album->permalink }}">{{ $album->title }}</a></h3>
+                        <h4 class="album-grid-subtitle">{!! $albumHelper->bandLinks($album) !!}</h4>
+                    </div>
+                    @endforeach
                     </div>
                 </div>
             </div>

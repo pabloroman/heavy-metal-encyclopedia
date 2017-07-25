@@ -10887,51 +10887,8 @@ ul, ol {
   opacity: 1;
 }
 
-.app-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  min-height: 100vh;
-}
-
-.app-container .drawer {
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  z-index: 10;
-}
-
-@media (min-width: 768px) {
-  .app-container .drawer {
-    width: auto;
-    position: relative;
-    min-width: 220px;
-    -ms-flex-preferred-size: 220px;
-        flex-basis: 220px;
-    display: block;
-  }
-}
-
-.app-container .content {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  padding: 15px;
-  max-width: 100%;
-}
-
-@media (min-width: 768px) {
-  .app-container .content {
-    padding: 30px;
-  }
-}
-
 .container .content {
-  padding: 15px;
+  padding: 24px;
   background: #FFFFFF;
 }
 
@@ -11083,6 +11040,17 @@ label {
   color: #babcbc;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.section-title-wrapper {
+  margin-bottom: 16px;
+}
+
+h2.section-title {
+  margin: 0;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: left;
 }
 
 .modal-loading {
@@ -11275,6 +11243,15 @@ fieldset[disabled] .navbar-admin .navbar-breadcrumb .dropdown-button-wrapper .bt
   .panel-body {
     padding: 30px;
   }
+}
+
+.section {
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+
+.section .container {
+  padding: 0 24px;
 }
 
 * {
@@ -11538,6 +11515,43 @@ strong {
   color: #FFFFFF;
   font-weight: bold;
   font-size: 14px;
+}
+
+.album-grid {
+  padding: 0 10px;
+  width: 48.5%;
+}
+
+.album-grid-wrapper {
+  margin-left: -10px;
+  margin-right: -10px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .album-grid {
+    width: 175px;
+  }
+}
+
+.album-grid-image {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.album-grid-title {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.album-grid-subtitle {
+  margin-top: 0px;
+  margin-bottom: 16px;
+  font-size: 16px;
 }
 
 .album-row--is-full-length td:first-child {

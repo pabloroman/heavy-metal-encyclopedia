@@ -1,41 +1,7 @@
-.app-container {
-
-    @include display_flex();
-    @include flex_direction(row);
-    min-height: 100vh;
-
-    .drawer {
-
-        overflow: hidden;
-        position: absolute;
-        width: 100%;
-        z-index: 10;
-
-        @media (min-width: $screen-sm-min) {
-            width: auto;
-            position: relative;
-            min-width: 220px;
-            flex-basis: 220px;
-            display: block;
-        }
-    }
-
-    .content {
-        flex-grow: 1;
-        padding: 15px;
-        max-width: 100%;
-
-        @media (min-width: $screen-sm-min) {
-            padding: 30px;
-        }
-    }
-}
-
 .container {
 
     .content {
-
-        padding: 15px;
+        padding: 24px;
         background: $white;
 
         @media (min-width: $screen-sm-min) {
