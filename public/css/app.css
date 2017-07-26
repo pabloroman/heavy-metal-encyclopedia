@@ -11012,6 +11012,10 @@ body {
   .navbar-form {
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
   }
 }
 
@@ -11095,7 +11099,6 @@ strong {
 }
 
 .header .flexy {
-  width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -11122,6 +11125,12 @@ strong {
 
 .header .container {
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .header .container {
+    width: 100%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -11209,7 +11218,7 @@ strong {
 
 .header-content {
   width: 100%;
-  margin: 36px 0;
+  padding: 36px 0;
 }
 
 .header-title-wrapper {
@@ -11219,6 +11228,9 @@ strong {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .header-title {

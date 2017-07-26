@@ -14,7 +14,6 @@ $album-header-height: 250px;
     }
 
     .flexy {
-        width: 100%;
         @include align_items(center);
         @include justify-content(flex-start);
         @include flex-direction(column);
@@ -26,6 +25,9 @@ $album-header-height: 250px;
 
     .container {
         position: relative;
+        @media (max-width: $screen-sm-min) {
+            width: 100%;
+        }
     }
 }
 
@@ -107,12 +109,13 @@ $album-header-height: 250px;
 
 .header-content {
     width: 100%;
-    margin: 36px 0;
+    padding: 36px 0;
 }
 
 .header-title-wrapper {
     @include display-flex();
     @include align-items(center);
+    @include justify-content(space-between);
 }
 
 .header-title {
