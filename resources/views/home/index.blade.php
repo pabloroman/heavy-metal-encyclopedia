@@ -2,6 +2,8 @@
 
 @inject('albumHelper', 'App\Helpers\Album')
 
+@section('body-class', 'body-homepage')
+
 @section('navigation')
 
 <div class="homepage">

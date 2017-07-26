@@ -24,6 +24,8 @@ $whatsapp: #43d854;
 // Body
 $body-bg: $white;
 
+$grid-gutter-width: 48px;
+
 // Borders
 $default-border-color: $smoke;
 $border-radius-base: 3px;
@@ -77,7 +79,7 @@ $panel-body-padding: 30px;
 
 // Navbar
 $navbar-height: 60px;
-$navbar-default-bg: $darkgrey;
+$navbar-default-bg: $midnight;
 $navbar-border-radius: 0;
 $navbar-default-color: $white;
 $navbar-default-link-color: transparentize($white, 0.2);

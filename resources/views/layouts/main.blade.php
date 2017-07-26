@@ -11,7 +11,7 @@
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="site-body">
+<body class="@yield('body-class')">
 
     @section('navigation')
     @show
