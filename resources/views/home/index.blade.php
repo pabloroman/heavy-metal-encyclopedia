@@ -35,11 +35,11 @@
                     <div class="grid album-grid-wrapper">
                     @foreach($trendingAlbums as $album)
                     <div class="album-grid">
-                        <a href="{{ $album->permalink }}">
+                        <a class="album-grid-image-wrapper" href="{{ $album->permalink }}">
                             <img class="album-grid-image" src="{{ $album->image }}">
                         </a>
-                        <h3 class="album-grid-title"><a href="{{ $album->permalink }}">{{ $album->title }}</a></h3>
                         <h4 class="album-grid-subtitle">{!! $albumHelper->bandLinks($album) !!}</h4>
+                        <h3 class="album-grid-title"><a href="{{ $album->permalink }}">{{ $album->title }}</a></h3>
                     </div>
                     @endforeach
                     </div>

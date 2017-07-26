@@ -1,5 +1,6 @@
 @extends('layouts.main')
 
+@section('body-class', 'body-band')
 @section('navigation')
     @include('layouts._nav')
 @endsection
@@ -61,7 +62,9 @@
         <div class="row">
 
             <div class="col-md-12">
-                <h2>{{ $band->name }} discography</h2>
+                <div class="section-title-wrapper">
+                <h2 class="section-title">{{ $band->name }} discography</h2>
+                </div>
 
                 <div class="table-responsive">
                     <table class="table album-table">

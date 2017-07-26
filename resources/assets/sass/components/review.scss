@@ -9,3 +9,50 @@
         color: $lightgrey;
     }
 }
+
+.review-wrapper {
+
+    text-align: center;
+    @include display-flex();
+    @include align_items(center);
+    @include flex_direction(column);
+
+    @media (min-width: $screen-sm-min) {
+        text-align: left;
+        @include flex_direction(row);
+    }
+
+    .review-score {
+        margin-left: 0;
+        margin-bottom: 5px;
+        @media (min-width: $screen-sm-min) {
+            margin-left: 10px;
+            margin-bottom: 0;
+        }
+        .header & {
+            font-size: 24px;
+        }
+    }
+
+    .review-count {
+        .header & {
+            margin-top: 5px;
+            @media (min-width: $screen-sm-min) {
+                margin-top: 0;
+                margin-left: 5px;
+            }
+            color: transparentize($white, 0.4);
+        }
+    }
+}
+
+$review-color: #58E014;
+$review-color: $green;
+@for $i from 0 through 10 {
+    $score: $i*10;
+    $review-color: change-color($review-color, $hue: $score);
+
+    .review-score-#{$score} {
+        background-color: $review-color;
+    }
+}
