@@ -18,7 +18,7 @@
         ></div>
 
         <div class="container">
-            <div class="flexy">
+            <div class="header-container">
                 @if($band->image)
                 <div class="header-avatar">
                     <div class="header-avatar-wrapper">
@@ -29,63 +29,85 @@
                 <div class="header-content">
                     <div class="header-title-wrapper">
                         <h1 class="header-title"><a href="{{ $band->permalink }}">{{ $band->name }}</a></h1>
-                        <span class="label header-label-{{ str_slug($band->status) }} header-label">{{ $band->status }}</span>
-                    </div>
-
-                    <div class="header-metadata">
-                        <ul>
-                            <li>
-                                <h4>Country</h4>
-                                <p>{{ $band->country }}</p>
-                            </li>
-                            <li>
-                                <h4>Genre</h4>
-                                <p>{{ $band->genre }}</p>
-                            </li>
-                            <li>
-                                <h4>Lyrical themes</h4>
-                                <p>{{ $band->lyrical_themes }}</p>
-                            </li>
-                            <li>
-                                <h4>Formed in</h4>
-                                <p>{{ $band->founded_at }}</p>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <div class="header-secondary
+        @if($band->image)
+            header--has-image
+        @endif
+    ">
+        <div class="container">
+            <div class="header-metadata">
+                <ul>
+                    <li>
+                        <h4>Country</h4>
+                        <p>{{ $band->country }}</p>
+                    </li>
+                    <li>
+                        <h4>Genre</h4>
+                        <p>{{ $band->genre }}</p>
+                    </li>
+                    <li>
+                        <h4>Lyrical themes</h4>
+                        <p>{{ $band->lyrical_themes }}</p>
+                    </li>
+                    <li>
+                        <h4>Formed in</h4>
+                        <p>{{ $band->founded_at }}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <section class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-9">
                     <div class="section-title-wrapper">
-                    <h2 class="section-title">{{ $band->name }} discography</h2>
+                        <h2 class="section-title">{{ $band->name }} discography</h2>
                     </div>
 
                     <div class="table-responsive">
                         <table class="table album-table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Year</th>
-                                    <th>Label</th>
-                                    <th>Rating</th>
-                                </tr>
-                            </thead>
+
                         @foreach($band->albums as $album)
-                        <tr class="album-row album-row--is-{{ str_slug($album->type) }}">
-                            <td><a href="{{ $album->permalink }}">{{ $album->title }}</a></td>
-                            <td>{{ $album->type }}</td>
-                            <td>{{ $album->published_at->format('Y') }}</td>
-                            <td>{{ $album->label }}</td>
-                            <td>@if($album->review_count) {{ $album->median_score }}% ({{ $album->review_count }} {{ str_plural('review', $album->review_count) }})@endif</td>
+                        <tr class="album-row album-row--is-{{ $album->typeSlug }}">
+                            <td>
+                                @if($album->typeSlug == 'full-length')
+                                <img src="{{ $album->image }}" width="150">
+                                @endif
+                            </td>
+                            <td>
+                                <div><a href="{{ $album->permalink }}">{{ $album->title }}</a></div>
+                                <div>{{ $album->published_at->format('Y') }} &middot; {{ $album->type }}</div>
+                                <div>{{ $album->label }}</div>
+                            </td>
+                            <td>
+                        @if($album->review_count)
+                        <div class="review-wrapper">
+                            <span class="review-score review-score-{{ round($album->median_score, -1) }}">{{ $album->median_score }}%</span><br>
+                            <span class="review-count">{{ $album->review_count }} {{ str_plural('review', $album->review_count) }}</span>
+                        </div>
+                        @endif
+                            </td>
                         </tr>
                         @endforeach
                         </table>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="section-title-wrapper">
+                        <h3 class="section-title">Latest reviews</h3>
+                    </div>
+
+                    <div class="section-title-wrapper">
+                        <h3 class="section-title">Similar artists</h3>
                     </div>
                 </div>
             </div>

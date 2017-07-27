@@ -1,26 +1,14 @@
 $band-header-height: 200px;
-$album-header-height: 250px;
+$album-header-height: 200px;
 
 .header {
-    @include display-flex();
     padding: 0;
     margin: 0;
     height: 100%;
     background-color: $midnight;
 
     @media (min-width: $screen-sm-min) {
-        margin-bottom: 60px;
         min-height: 100px;
-    }
-
-    .flexy {
-        @include align_items(center);
-        @include justify-content(flex-start);
-        @include flex-direction(column);
-        @media (min-width: $screen-sm-min) {
-            @include flex-direction(row);
-            @include align_items(flex-start);
-        }
     }
 
     .container {
@@ -28,6 +16,65 @@ $album-header-height: 250px;
         @media (max-width: $screen-sm-min) {
             width: 100%;
         }
+    }
+
+    &-container {
+        @include display-flex();
+        @include align-items(center);
+        @include flex-direction(column);
+        padding: 18px 0;
+        @media (min-width: $screen-sm-min) {
+            @include flex-direction(row);
+            padding: 36px 0 0;
+        }
+    }
+
+    &-title-wrapper {
+        @include display-flex();
+        @include align-items(center);
+        @include flex-direction(column);
+        @media (min-width: $screen-sm-min) {
+            @include flex-direction(row);
+        }
+    }
+
+    &-title {
+        margin: 0;
+        font-weight: bold;
+        font-size: 36px;
+        color: $white;
+        text-align: center;
+        @media (min-width: $screen-sm-min) {
+            text-align: left;
+            font-size: 54px;
+        }
+        a {
+            color: $white;
+        }
+    }
+
+    &-subtitle {
+        margin: 0;
+        font-weight: bold;
+        color: $white;
+        text-transform: uppercase;
+    	font-size: 18px;
+    	margin-bottom: 10px;
+    	text-align: center;
+        @media (min-width: $screen-sm-min) {
+            text-align: left;
+        }
+        a {
+            color: $white;
+        }
+    }
+
+    &--has-image {
+        .header-metadata {
+            @media (min-width: $screen-sm-min) {
+                padding-left: 236px;
+            }
+	    }
     }
 }
 
@@ -71,13 +118,15 @@ $album-header-height: 250px;
 }
 
 .header-avatar {
-    margin: 36px auto 0;
+    margin: 0 auto;
+    margin-bottom: 16px;
     @media (min-width: $screen-sm-min) {
-        margin-top: 36px;
         margin-right: 36px;
+        margin-bottom: 0;
+        margin-left: 0;
     }
-    &-wrapper {
 
+    &-wrapper {
         overflow: hidden;
         @include display-flex();
         @include align_items(center);
@@ -107,81 +156,49 @@ $album-header-height: 250px;
     }
 }
 
-.header-content {
-    width: 100%;
-    padding: 36px 0;
-}
-
-.header-title-wrapper {
-    @include display-flex();
-    @include align-items(center);
-    @include justify-content(space-between);
-}
-
-.header-title {
-    margin: 0;
-    font-weight: bold;
-    color: $white;
-    a {
-        color: $white;
-    }
-}
-
-.header-subtitle {
-    margin: 0;
-    font-weight: bold;
-    color: $white;
-    text-transform: uppercase;
-	font-size: 20px;
-	margin-bottom: 10px;
-
-    a {
-        color: $white;
-    }
-}
-
-.header-label {
-    display: block;
-    margin-left: 10px;
-    padding: .3em .6em .3em;
-    background-color: $lightgrey;
-    &-active {
-        background-color: $green;
-    }
+.header-secondary {
+    background: $smoke;
+    border-bottom: 1px solid $lightestgrey;
 }
 
 .header-metadata {
-    margin-top: 14px;
+    padding: 18px 0;
+
     ul {
         list-style: none;
         @include display-flex();
         @include flex-direction(column);
         margin-left: 0;
+
         @media (min-width: $screen-sm-min) {
             @include flex-direction(row);
         }
         li {
+            margin: 4px 0;
 
             @media (min-width: $screen-sm-min) {
                 float: left;
-                max-width: 25%;
-                margin-right: 24px;
+                max-width: 40%;
+                margin-right: 36px;
+                margin-bottom: 0;
+                margin-top: 0;
             }
 
             h4 {
-                color: transparentize($white, 0.4);
+                color: transparentize($grey, 0.4);
                 text-transform: uppercase;
                 font-size: 11px;
                 margin: 0;
                 @media (min-width: $screen-sm-min) {
-                    margin: 10px 0;
+                    margin: 4px 0;
                 }
             }
 
             p {
-                color: $white;
+                color: $grey;
                 font-weight: bold;
                 font-size: 14px;
+                margin: 0;
             }
         }
     }

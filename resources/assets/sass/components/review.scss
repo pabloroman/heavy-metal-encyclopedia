@@ -1,5 +1,6 @@
 .review {
-    margin: 40px 0;
+    padding: 36px 0;
+    border-bottom: 1px solid $lightestgrey;
 
     &-title {
         font-weight: bold;
@@ -12,25 +13,29 @@
 
 .review-wrapper {
 
-    text-align: center;
-    @include display-flex();
-    @include align_items(center);
-    @include flex_direction(column);
-
+    margin-top: 6px;
     @media (min-width: $screen-sm-min) {
         text-align: left;
-        @include flex_direction(row);
+        margin-top: 0;
     }
 
     .review-score {
-        margin-left: 0;
-        margin-bottom: 5px;
+        margin: 0;
+        margin-right: 6px;
+        display: inline-block;
+        padding: .2em .6em .3em;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+
         @media (min-width: $screen-sm-min) {
-            margin-left: 10px;
+            margin-left: 16px;
             margin-bottom: 0;
-        }
-        .header & {
-            font-size: 24px;
         }
     }
 

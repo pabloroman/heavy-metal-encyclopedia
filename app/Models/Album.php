@@ -54,6 +54,11 @@ class Album extends Model
         });
     }
 
+    public function getTypeSlugAttribute()
+    {
+        return str_slug($this->type);
+    }
+
     public function getReviewCount()
     {
         return $this->reviews->count();
