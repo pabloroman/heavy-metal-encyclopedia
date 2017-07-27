@@ -57,39 +57,39 @@
         </div>
     </header>
 
-    <div class="container">
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title-wrapper">
+                    <h2 class="section-title">{{ $band->name }} discography</h2>
+                    </div>
 
-        <div class="row">
-
-            <div class="col-md-12">
-                <div class="section-title-wrapper">
-                <h2 class="section-title">{{ $band->name }} discography</h2>
-                </div>
-
-                <div class="table-responsive">
-                    <table class="table album-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Year</th>
-                                <th>Label</th>
-                                <th>Rating</th>
-                            </tr>
-                        </thead>
-                    @foreach($band->albums as $album)
-                    <tr class="album-row album-row--is-{{ str_slug($album->type) }}">
-                        <td><a href="{{ $album->permalink }}">{{ $album->title }}</a></td>
-                        <td>{{ $album->type }}</td>
-                        <td>{{ $album->published_at->format('Y') }}</td>
-                        <td>{{ $album->label }}</td>
-                        <td>@if($album->review_count) {{ $album->median_score }}% ({{ $album->review_count }} {{ str_plural('review', $album->review_count) }})@endif</td>
-                    </tr>
-                    @endforeach
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table album-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Year</th>
+                                    <th>Label</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                        @foreach($band->albums as $album)
+                        <tr class="album-row album-row--is-{{ str_slug($album->type) }}">
+                            <td><a href="{{ $album->permalink }}">{{ $album->title }}</a></td>
+                            <td>{{ $album->type }}</td>
+                            <td>{{ $album->published_at->format('Y') }}</td>
+                            <td>{{ $album->label }}</td>
+                            <td>@if($album->review_count) {{ $album->median_score }}% ({{ $album->review_count }} {{ str_plural('review', $album->review_count) }})@endif</td>
+                        </tr>
+                        @endforeach
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 @endsection

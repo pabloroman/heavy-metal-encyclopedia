@@ -73,7 +73,7 @@
                     <div class="section-title-wrapper">
                         <h2 class="section-title">{{ $album->title }} reviews</h2>
                     </div>
-                    @forelse($album->reviews->sortByDesc('published_at') as $review)
+                    @forelse($album->reviews as $review)
                         <div class="review">
                             <h4 class="review-title">{{ $review->title }} - {{ $review->score }}%</h4>
                             <h5 class="review-author">By <a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
