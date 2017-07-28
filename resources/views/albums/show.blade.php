@@ -36,12 +36,7 @@
 
                     <div class="header-title-wrapper">
                         <h1 class="header-title"><a href="{{ $album->permalink }}">{{ $album->title }}</a></h1>
-                        @if($album->review_count)
-                        <div class="review-wrapper">
-                            <span class="review-score review-score-{{ round($album->median_score, -1) }}">{{ $album->median_score }}%</span>
-                            <span class="review-count">{{ $album->review_count }} {{ str_plural('review', $album->review_count) }}</span>
-                        </div>
-                        @endif
+                        @includeWhen($album->review_count, 'partials._review-score')
                     </div>
 
                 </div>

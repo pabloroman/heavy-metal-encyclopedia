@@ -67,21 +67,23 @@
     <section class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="section-title-wrapper">
                         <h2 class="section-title">{{ $band->name }} discography</h2>
                     </div>
 
+                    <section class="section">
+                        <div class="album-grid">
+                            @foreach($band->albums as $album)
+                                @include('partials._album-grid-item')
+                            @endforeach
+                        </div>
+<!--
                     <div class="table-responsive">
                         <table class="table album-table">
 
                         @foreach($band->albums as $album)
                         <tr class="album-row album-row--is-{{ $album->typeSlug }}">
-                            <td>
-                                @if($album->typeSlug == 'full-length')
-                                <img src="{{ $album->image }}" width="150">
-                                @endif
-                            </td>
                             <td>
                                 <div><a href="{{ $album->permalink }}">{{ $album->title }}</a></div>
                                 <div>{{ $album->published_at->format('Y') }} &middot; {{ $album->type }}</div>
@@ -99,8 +101,11 @@
                         @endforeach
                         </table>
                     </div>
+-->
+                    </section>
                 </div>
 
+<!--
                 <div class="col-md-3">
                     <div class="section-title-wrapper">
                         <h3 class="section-title">Latest reviews</h3>
@@ -110,6 +115,7 @@
                         <h3 class="section-title">Similar artists</h3>
                     </div>
                 </div>
+-->
             </div>
         </div>
     </section>

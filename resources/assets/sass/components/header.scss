@@ -40,6 +40,7 @@ $album-header-height: 200px;
 
     &-title {
         margin: 0;
+        margin-bottom: 10px;
         font-weight: bold;
         font-size: 36px;
         color: $white;
@@ -47,6 +48,8 @@ $album-header-height: 200px;
         @media (min-width: $screen-sm-min) {
             text-align: left;
             font-size: 54px;
+            margin-right: 16px;
+            margin-bottom: 0;
         }
         a {
             color: $white;

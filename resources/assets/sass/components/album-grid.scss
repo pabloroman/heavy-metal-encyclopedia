@@ -1,37 +1,74 @@
 .album-grid {
 
-    &-wrapper {
-        margin-left: -10px;
-        margin-right: -10px;
-        @include justify-content(flex-start);
-    }
-
-    padding: 10px;
-    width: 48.5%;
-
-    @media (min-width: $screen-sm-min) {
-        width: 220px;
-    }
-
-    &-image {
-        &-wrapper {
-            display: block;
-            margin-bottom: 10px;
-        }
-        width: 100%;
-    }
-
     &-title {
         margin-top: 0;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     	font-weight: bold;
     	font-size: 18px;
+    	line-height: 1.2;
     }
 
     &-subtitle {
         margin-top: 0px;
         margin-bottom: 5px;
-        font-size: 11px;
+        font-size: 13px;
+        font-weight: bold;
         text-transform: uppercase;
+    }
+}
+
+.album-grid {
+    margin-left: -8px;
+    margin-right: -8px;
+
+    @media (min-width: $screen-sm-min) {
+        margin-left: -12px;
+        margin-right: -8px;
+        @include display_flex();
+        @include flex-wrap(wrap);
+    }
+    &-item {
+        @include display_flex();
+        @include flex-direction(row);
+        @include align-items(flex-start);
+        @media (min-width: $screen-sm-min) {
+            @include flex-direction(column);
+            width: 184px;
+            padding: 12px;
+        }
+        padding: 8px;
+    }
+
+    &-image-wrapper {
+        margin-right: 16px;
+        @media (min-width: $screen-sm-min) {
+            margin-bottom: 16px;
+        }
+        a {
+            display: block;
+        }
+    }
+
+    &-image {
+        border-radius: 3px;
+        width: 80px;
+        height: 80px;
+        @media (min-width: $screen-sm-min) {
+            width: 160px;
+            height: 160px;
+        }
+    }
+
+    &-description {
+        @include flex-grow(1);
+        @media (min-width: $screen-sm-min) {
+            margin-bottom: 6px;
+        }
+    }
+
+    .review-wrapper {
+        .review-score {
+            font-size: 16px;
+        }
     }
 }

@@ -1,7 +1,5 @@
 @extends('layouts.main')
 
-@inject('albumHelper', 'App\Helpers\Album')
-
 @section('body-class', 'body-homepage')
 
 @section('navigation')
@@ -32,17 +30,13 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="grid album-grid-wrapper">
-                    @foreach($trendingAlbums as $album)
-                    <div class="album-grid">
-                        <a class="album-grid-image-wrapper" href="{{ $album->permalink }}">
-                            <img class="album-grid-image" src="{{ $album->image }}">
-                        </a>
-                        <h4 class="album-grid-subtitle">{!! $albumHelper->bandLinks($album) !!}</h4>
-                        <h3 class="album-grid-title"><a href="{{ $album->permalink }}">{{ $album->title }}</a></h3>
-                    </div>
-                    @endforeach
-                    </div>
+                    <section class="section">
+                        <div class="album-grid">
+                        @foreach($trendingAlbums as $album)
+                            @include('partials._album-grid-item', ['hasBands' => true])
+                        @endforeach
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
