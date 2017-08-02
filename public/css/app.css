@@ -11026,6 +11026,10 @@ body {
   }
 }
 
+.navbar-form .form-control {
+  border: 0;
+}
+
 @media (min-width: 768px) {
   .navbar-form .form-control {
     width: 280px;
@@ -11484,18 +11488,25 @@ strong {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 @media (min-width: 768px) {
   .review-wrapper {
     text-align: left;
     margin-top: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
 .review-wrapper .review-score {
   margin: 0;
-  margin-right: 6px;
   display: inline-block;
   padding: .2em .6em .3em;
   font-size: 24px;
@@ -11511,6 +11522,7 @@ strong {
 @media (min-width: 768px) {
   .review-wrapper .review-score {
     margin-bottom: 0;
+    margin-right: 6px;
   }
 }
 

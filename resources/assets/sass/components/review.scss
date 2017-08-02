@@ -15,15 +15,17 @@
 
     @include display_flex();
     @include align-items(center);
+    @include flex-direction(row);
 
     @media (min-width: $screen-sm-min) {
         text-align: left;
         margin-top: 0;
+        @include flex-direction(column);
+
     }
 
     .review-score {
         margin: 0;
-        margin-right: 6px;
         display: inline-block;
         padding: .2em .6em .3em;
         font-size: 24px;
@@ -37,6 +39,7 @@
 
         @media (min-width: $screen-sm-min) {
             margin-bottom: 0;
+            margin-right: 6px;
         }
     }
 

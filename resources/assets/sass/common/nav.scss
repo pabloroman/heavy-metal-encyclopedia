@@ -25,6 +25,7 @@
         }
 
         .form-control {
+            border: 0;
             @media (min-width: $screen-sm-min) {
                 width: 280px;
             }

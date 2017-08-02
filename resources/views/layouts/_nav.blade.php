@@ -9,7 +9,8 @@
         </div>
 
         <form class="navbar-form navbar-right" action="{{ route('search') }}" method="get">
-            <div class="form-group">
+            <div class="form-group has-feedback">
+                <i class="fa fa-search form-control-feedback" aria-hidden="true"></i>
                 <input class="form-control" placeholder="Search" type="text" name="q">
             </div>
         </form>
