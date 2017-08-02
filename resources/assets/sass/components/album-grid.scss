@@ -61,9 +61,14 @@
 
     &-description {
         @include flex-grow(1);
+        width: 100%;
         @media (min-width: $screen-sm-min) {
             margin-bottom: 6px;
         }
+    }
+
+    &-meta {
+        font-size: 13px;
     }
 
     .review-wrapper {

@@ -18,9 +18,7 @@
         border: 0;
         box-shadow: none;
         @media (max-width: $screen-sm-min) {
-            margin-top: 0;
-            margin-bottom: 0;
-            margin-left: 0;
+            margin: 0;
             flex: 1;
         }
 

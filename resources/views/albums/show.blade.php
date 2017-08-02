@@ -74,11 +74,14 @@
                     </div>
                     @forelse($album->reviews as $review)
                         <div class="review">
-                            <div class="review-wrapper">
-                            <span style="margin-left: 0" class="review-score review-score-{{ round($review->score, -1) }}">{{ $review->score }}%</span></div>
-                            <h4 class="review-title">{{ $review->title }}</h4>
-                            <h5 class="review-author">By <a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
-                            <div class="review-content">{!! $parser->nl2p($review->body) !!}</div>
+                            <div class="review-score">
+                            <span class="review-score-points review-score-{{ round($review->score, -1) }}">{{ $review->score }}%</span>
+                            </div>
+                            <div class="review-content">
+                                <h5 class="review-author"><a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
+                                <h4 class="review-title">{{ $review->title }}</h4>
+                                <div class="review-body hidden">{!! $parser->nl2p($review->body) !!}</div>
+                            </div>
                         </div>
                     @empty
                     <div>There are no reviews yet</div>

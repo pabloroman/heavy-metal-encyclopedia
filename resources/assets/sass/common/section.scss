@@ -1,6 +1,12 @@
 .section {
-    margin-top: 36px;
-    margin-bottom: 36px;
+
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @media (min-width: $screen-sm-min) {
+        margin-top: 36px;
+        margin-bottom: 36px;
+    }
 
     .container {
         padding: 0 24px;

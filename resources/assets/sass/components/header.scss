@@ -5,10 +5,11 @@ $album-header-height: 200px;
     padding: 0;
     margin: 0;
     height: 100%;
+    min-height: 150px;
     background-color: $midnight;
 
     @media (min-width: $screen-sm-min) {
-        min-height: 100px;
+        min-height: 150px;
     }
 
     .container {
@@ -31,10 +32,17 @@ $album-header-height: 200px;
 
     &-title-wrapper {
         @include display-flex();
-        @include align-items(center);
+        @include align-items(baseline);
         @include flex-direction(column);
         @media (min-width: $screen-sm-min) {
             @include flex-direction(row);
+        }
+
+        .score {
+            width: 100%;
+            @media (min-width: $screen-sm-min) {
+                width: auto;
+            }
         }
     }
 
@@ -95,7 +103,7 @@ $album-header-height: 200px;
 
 .header-background {
     position: absolute;
-    min-height: 100px;
+    min-height: 150px;
     width: 100%;
     background-size: cover;
     background-position: center 20%;

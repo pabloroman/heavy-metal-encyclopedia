@@ -1,13 +1,35 @@
 .review {
-    padding: 36px 0;
+    padding: 16px 0;
     border-bottom: 1px solid $lightestgrey;
 
     &-title {
         font-weight: bold;
+        margin: 0;
     }
 
     &-author {
         color: $lightgrey;
+        margin: 0;
+        margin-bottom: 6px;
+        font-size: 13px;
+        a {
+            color: $lightgrey;
+            font-weight: 600;
+        }
+    }
+
+    &-score {
+        display: table-cell;
+        width: 60px;
+        vertical-align: middle;
+        &-points {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+
+    &-content {
+        display: table-cell;
     }
 }
 
@@ -63,6 +85,7 @@ $review-color: $green;
     $review-color: change-color($review-color, $hue: $score);
 
     .review-score-#{$score} {
-        background-color: $review-color;
+        //background-color: $review-color;
+        color: $review-color;
     }
 }

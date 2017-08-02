@@ -11,9 +11,10 @@
         <h4 class="album-grid-subtitle">{!! $albumHelper->bandLinks($album) !!}</h4>
         @endif
         <h3 class="album-grid-title"><a href="{{ $album->permalink }}">{{ $album->title }}</a></h3>
-        <div>{{ $album->published_at->format('Y') }} &middot; {{ $album->type }}</div>
-        <div>{{ $album->label }}</div>
+        <div class="album-grid-meta">{{ $album->published_at->format('Y') }} &middot; {{ $album->type }}</div>
+        <div class="album-grid-meta">{{ $album->label }}</div>
+        @includeWhen($album->review_count, 'partials._review-score')
     </div>
 
-    @includeWhen($album->review_count, 'partials._review-score')
+
 </div>

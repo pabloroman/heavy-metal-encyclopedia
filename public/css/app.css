@@ -1622,7 +1622,7 @@ mark,
 }
 
 .text-muted {
-  color: #babcbc;
+  color: #a1a3a3;
 }
 
 .text-primary {
@@ -2690,7 +2690,7 @@ table {
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
-  color: #babcbc;
+  color: #a1a3a3;
   text-align: left;
 }
 
@@ -5148,7 +5148,7 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: #e6e5e5;
+  color: #FFFFFF;
   background-color: transparent;
 }
 
@@ -10877,7 +10877,7 @@ ul, ol {
 
 .footer {
   padding: 24px 0;
-  border-top: 1px solid #e3e5e5;
+  border-top: 1px solid #ececec;
   margin-top: 48px;
   margin-bottom: 96px;
 }
@@ -10955,11 +10955,11 @@ label {
 }
 
 .heading-with-icon .fa {
-  color: #babcbc;
+  color: #a1a3a3;
 }
 
 .heading-with-icon .heading {
-  color: #babcbc;
+  color: #a1a3a3;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -10971,15 +10971,27 @@ label {
 h2.section-title {
   margin: 0;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 22px;
   text-align: left;
+}
+
+@media (min-width: 768px) {
+  h2.section-title {
+    font-size: 28px;
+  }
 }
 
 h3.section-title {
   margin: 0;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 18px;
   text-align: left;
+}
+
+@media (min-width: 768px) {
+  h3.section-title {
+    font-size: 24px;
+  }
 }
 
 body {
@@ -11017,9 +11029,7 @@ body {
 
 @media (max-width: 768px) {
   .navbar-form {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 0;
+    margin: 0;
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
@@ -11047,8 +11057,15 @@ body {
 }
 
 .section {
-  margin-top: 36px;
-  margin-bottom: 36px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
 }
 
 .section .container {
@@ -11096,12 +11113,13 @@ strong {
   padding: 0;
   margin: 0;
   height: 100%;
+  min-height: 150px;
   background-color: #292e33;
 }
 
 @media (min-width: 768px) {
   .header {
-    min-height: 100px;
+    min-height: 150px;
   }
 }
 
@@ -11143,9 +11161,9 @@ strong {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -11158,6 +11176,16 @@ strong {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+  }
+}
+
+.header-title-wrapper .score {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .header-title-wrapper .score {
+    width: auto;
   }
 }
 
@@ -11223,7 +11251,7 @@ strong {
 
 .header-background {
   position: absolute;
-  min-height: 100px;
+  min-height: 150px;
   width: 100%;
   background-size: cover;
   background-position: center 20%;
@@ -11296,7 +11324,7 @@ strong {
 
 .header-secondary {
   background: #f7f8fc;
-  border-bottom: 1px solid #e3e5e5;
+  border-bottom: 1px solid #ececec;
 }
 
 .header-metadata {
@@ -11447,12 +11475,17 @@ strong {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .album-grid-description {
     margin-bottom: 6px;
   }
+}
+
+.album-grid-meta {
+  font-size: 13px;
 }
 
 .album-grid .review-wrapper .review-score {
@@ -11469,16 +11502,40 @@ strong {
 }
 
 .review {
-  padding: 36px 0;
-  border-bottom: 1px solid #e3e5e5;
+  padding: 16px 0;
+  border-bottom: 1px solid #ececec;
 }
 
 .review-title {
   font-weight: bold;
+  margin: 0;
 }
 
 .review-author {
-  color: #babcbc;
+  color: #a1a3a3;
+  margin: 0;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.review-author a {
+  color: #a1a3a3;
+  font-weight: 600;
+}
+
+.review-score {
+  display: table-cell;
+  width: 60px;
+  vertical-align: middle;
+}
+
+.review-score-points {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.review-content {
+  display: table-cell;
 }
 
 .review-wrapper {
@@ -11543,46 +11600,169 @@ strong {
 }
 
 .review-score-0 {
-  background-color: #b84d4d;
+  color: #b84d4d;
 }
 
 .review-score-10 {
-  background-color: #b85f4d;
+  color: #b85f4d;
 }
 
 .review-score-20 {
-  background-color: #b8714d;
+  color: #b8714d;
 }
 
 .review-score-30 {
-  background-color: #b8834d;
+  color: #b8834d;
 }
 
 .review-score-40 {
-  background-color: #b8944d;
+  color: #b8944d;
 }
 
 .review-score-50 {
-  background-color: #b8a64d;
+  color: #b8a64d;
 }
 
 .review-score-60 {
-  background-color: #b8b84d;
+  color: #b8b84d;
 }
 
 .review-score-70 {
-  background-color: #a6b84d;
+  color: #a6b84d;
 }
 
 .review-score-80 {
-  background-color: #94b84d;
+  color: #94b84d;
 }
 
 .review-score-90 {
-  background-color: #83b84d;
+  color: #83b84d;
 }
 
 .review-score-100 {
+  color: #71b84d;
+}
+
+.score {
+  margin-top: 5px;
+}
+
+.score-bar {
+  height: 3px;
+  width: 100%;
+  background: #f7f8fc;
+  margin-bottom: 1px;
+}
+
+.score-bar-filled {
+  height: 3px;
+}
+
+.score-digits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.score-points {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.score-reviews {
+  color: #a1a3a3;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.score-points-0 {
+  color: #b84d4d;
+}
+
+.score-bar-score-0 {
+  background-color: #b84d4d;
+}
+
+.score-points-10 {
+  color: #b85f4d;
+}
+
+.score-bar-score-10 {
+  background-color: #b85f4d;
+}
+
+.score-points-20 {
+  color: #b8714d;
+}
+
+.score-bar-score-20 {
+  background-color: #b8714d;
+}
+
+.score-points-30 {
+  color: #b8834d;
+}
+
+.score-bar-score-30 {
+  background-color: #b8834d;
+}
+
+.score-points-40 {
+  color: #b8944d;
+}
+
+.score-bar-score-40 {
+  background-color: #b8944d;
+}
+
+.score-points-50 {
+  color: #b8a64d;
+}
+
+.score-bar-score-50 {
+  background-color: #b8a64d;
+}
+
+.score-points-60 {
+  color: #b8b84d;
+}
+
+.score-bar-score-60 {
+  background-color: #b8b84d;
+}
+
+.score-points-70 {
+  color: #a6b84d;
+}
+
+.score-bar-score-70 {
+  background-color: #a6b84d;
+}
+
+.score-points-80 {
+  color: #94b84d;
+}
+
+.score-bar-score-80 {
+  background-color: #94b84d;
+}
+
+.score-points-90 {
+  color: #83b84d;
+}
+
+.score-bar-score-90 {
+  background-color: #83b84d;
+}
+
+.score-points-100 {
+  color: #71b84d;
+}
+
+.score-bar-score-100 {
   background-color: #71b84d;
 }
 
