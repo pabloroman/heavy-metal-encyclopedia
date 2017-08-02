@@ -28,7 +28,7 @@ class Band extends Model
 
     public function albums()
     {
-        return $this->belongsToMany(Album::class)->orderBy('published_at');
+        return $this->belongsToMany(Album::class)->orderBy('published_at', 'desc');
     }
 
     public function getSlugAttribute()

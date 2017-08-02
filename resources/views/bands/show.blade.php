@@ -73,8 +73,16 @@
                     </div>
 
                     <section class="section">
+                        <h3>Full-length albums</h3>
                         <div class="album-grid">
-                            @foreach($band->albums as $album)
+                            @foreach($band->albums->where('type', 'Full-length') as $album)
+                                @include('partials._album-grid-item')
+                            @endforeach
+                        </div>
+
+                        <h3>Other releases</h3>
+                        <div class="album-grid">
+                            @foreach($band->albums->where('type', '!=', 'Full-length') as $album)
                                 @include('partials._album-grid-item')
                             @endforeach
                         </div>
