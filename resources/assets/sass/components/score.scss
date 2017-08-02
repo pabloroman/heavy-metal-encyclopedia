@@ -36,8 +36,7 @@ $review-color: $green;
     $score: $i*10;
     $review-color: change-color($review-color, $hue: $score);
 
-    .score-points-#{$score} {
-        //background-color: $review-color;
+    .score-points-#{$score}, .review-score-#{$score} {
         color: $review-color;
     }
 

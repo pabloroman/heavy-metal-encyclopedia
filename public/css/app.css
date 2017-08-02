@@ -3647,26 +3647,26 @@ fieldset[disabled] a.btn {
 .btn-default {
   color: #616363;
   background-color: #fff;
-  border-color: #ccc;
+  border-color: #ececec;
 }
 
 .btn-default:focus, .btn-default.focus {
   color: #616363;
   background-color: #e6e5e5;
-  border-color: #8c8c8c;
+  border-color: #acacac;
 }
 
 .btn-default:hover {
   color: #616363;
   background-color: #e6e5e5;
-  border-color: #adadad;
+  border-color: #cdcdcd;
 }
 
 .btn-default:active, .btn-default.active,
 .open > .btn-default.dropdown-toggle {
   color: #616363;
   background-color: #e6e5e5;
-  border-color: #adadad;
+  border-color: #cdcdcd;
 }
 
 .btn-default:active:hover, .btn-default:active:focus, .btn-default:active.focus, .btn-default.active:hover, .btn-default.active:focus, .btn-default.active.focus,
@@ -3675,7 +3675,7 @@ fieldset[disabled] a.btn {
 .open > .btn-default.dropdown-toggle.focus {
   color: #616363;
   background-color: #d4d4d4;
-  border-color: #8c8c8c;
+  border-color: #acacac;
 }
 
 .btn-default:active, .btn-default.active,
@@ -3688,7 +3688,7 @@ fieldset[disabled] .btn-default:hover,
 fieldset[disabled] .btn-default:focus,
 fieldset[disabled] .btn-default.focus {
   background-color: #fff;
-  border-color: #ccc;
+  border-color: #ececec;
 }
 
 .btn-default .badge {
@@ -11526,7 +11526,7 @@ strong {
 .review-score {
   display: table-cell;
   width: 60px;
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 .review-score-points {
@@ -11538,109 +11538,25 @@ strong {
   display: table-cell;
 }
 
-.review-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+.review-body {
+  height: 100px;
+  overflow: hidden;
+  margin: 16px 0;
+  position: relative;
 }
 
-@media (min-width: 768px) {
-  .review-wrapper {
-    text-align: left;
-    margin-top: 0;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
+.review-body:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(transparent 20px, white);
 }
 
-.review-wrapper .review-score {
-  margin: 0;
-  display: inline-block;
-  padding: .2em .6em .3em;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25em;
-}
-
-@media (min-width: 768px) {
-  .review-wrapper .review-score {
-    margin-bottom: 0;
-    margin-right: 6px;
-  }
-}
-
-.review-wrapper .review-count {
-  white-space: nowrap;
-}
-
-.header .review-wrapper .review-count {
-  margin-top: 5px;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-@media (min-width: 768px) {
-  .header .review-wrapper .review-count {
-    margin-top: 0;
-    margin-left: 5px;
-  }
-}
-
-.review-score-0 {
-  color: #b84d4d;
-}
-
-.review-score-10 {
-  color: #b85f4d;
-}
-
-.review-score-20 {
-  color: #b8714d;
-}
-
-.review-score-30 {
-  color: #b8834d;
-}
-
-.review-score-40 {
-  color: #b8944d;
-}
-
-.review-score-50 {
-  color: #b8a64d;
-}
-
-.review-score-60 {
-  color: #b8b84d;
-}
-
-.review-score-70 {
-  color: #a6b84d;
-}
-
-.review-score-80 {
-  color: #94b84d;
-}
-
-.review-score-90 {
-  color: #83b84d;
-}
-
-.review-score-100 {
-  color: #71b84d;
+.review-body--is-open {
+  height: auto;
 }
 
 .score {
@@ -11678,7 +11594,7 @@ strong {
   margin-left: 6px;
 }
 
-.score-points-0 {
+.score-points-0, .review-score-0 {
   color: #b84d4d;
 }
 
@@ -11686,7 +11602,7 @@ strong {
   background-color: #b84d4d;
 }
 
-.score-points-10 {
+.score-points-10, .review-score-10 {
   color: #b85f4d;
 }
 
@@ -11694,7 +11610,7 @@ strong {
   background-color: #b85f4d;
 }
 
-.score-points-20 {
+.score-points-20, .review-score-20 {
   color: #b8714d;
 }
 
@@ -11702,7 +11618,7 @@ strong {
   background-color: #b8714d;
 }
 
-.score-points-30 {
+.score-points-30, .review-score-30 {
   color: #b8834d;
 }
 
@@ -11710,7 +11626,7 @@ strong {
   background-color: #b8834d;
 }
 
-.score-points-40 {
+.score-points-40, .review-score-40 {
   color: #b8944d;
 }
 
@@ -11718,7 +11634,7 @@ strong {
   background-color: #b8944d;
 }
 
-.score-points-50 {
+.score-points-50, .review-score-50 {
   color: #b8a64d;
 }
 
@@ -11726,7 +11642,7 @@ strong {
   background-color: #b8a64d;
 }
 
-.score-points-60 {
+.score-points-60, .review-score-60 {
   color: #b8b84d;
 }
 
@@ -11734,7 +11650,7 @@ strong {
   background-color: #b8b84d;
 }
 
-.score-points-70 {
+.score-points-70, .review-score-70 {
   color: #a6b84d;
 }
 
@@ -11742,7 +11658,7 @@ strong {
   background-color: #a6b84d;
 }
 
-.score-points-80 {
+.score-points-80, .review-score-80 {
   color: #94b84d;
 }
 
@@ -11750,7 +11666,7 @@ strong {
   background-color: #94b84d;
 }
 
-.score-points-90 {
+.score-points-90, .review-score-90 {
   color: #83b84d;
 }
 
@@ -11758,7 +11674,7 @@ strong {
   background-color: #83b84d;
 }
 
-.score-points-100 {
+.score-points-100, .review-score-100 {
   color: #71b84d;
 }
 

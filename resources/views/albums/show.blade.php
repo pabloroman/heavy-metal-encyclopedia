@@ -80,7 +80,8 @@
                             <div class="review-content">
                                 <h5 class="review-author"><a href="https://www.metal-archives.com/users/{{ $review->author }}" target="_blank">{{ $review->author }}</a> on {{ $review->published_at->format('F jS, Y') }}</h5>
                                 <h4 class="review-title">{{ $review->title }}</h4>
-                                <div class="review-body hidden">{!! $parser->nl2p($review->body) !!}</div>
+                                <div class="review-body">{!! $parser->nl2p($review->body) !!}</div>
+                                <a class="btn btn-default" href="javascript:void(0)" onclick="$(this).siblings('.review-body').toggleClass('review-body--is-open');$(this).addClass('hidden');">Read more</a>
                             </div>
                         </div>
                     @empty
