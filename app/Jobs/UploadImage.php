@@ -14,26 +14,35 @@ class UploadImage implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $url;
-    public $prefix;
+    public $model;
+    public $image_url;
+    public $image_path;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($url, $prefix)
+    public function __construct($model)
     {
-        $this->url = $url;
-        $this->prefix = $prefix;
+        $this->model = $model;
+        $this->image_url = $this->model->image_url_original;
+        $this->image_path = $this->model->getTable() . parse_url($this->image_url)['path'];
     }
 
     public function handle()
     {
-        $path = $this->prefix . parse_url($this->url)['path'];
+        if ($this->image_url) {
+            $image = @file_get_contents($this->image_url);
+            if ($image === false) {
+                return false;
+            }
+            file_put_contents('/tmp/image', $image);
 
-        file_put_contents('/tmp/image', file_get_contents($this->url));
-        $resource = fopen('/tmp/image', 'r');
-        Storage::disk('s3')->put($path, $resource);
+            if (Storage::disk('s3')->put($this->image_path, fopen('/tmp/image', 'r'))) {
+                $this->model->image_url = 'https://s3.amazonaws.com/assets.heavymetalencyclopedia.com/' . $this->image_path;
+                $this->model->save();
+            }
+        }
     }
 }

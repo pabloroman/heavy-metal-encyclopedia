@@ -19,13 +19,9 @@ class AlbumCreated
      */
     public function __construct($album)
     {
-        $albumInfo = (new MetalArchives())->getAlbum($album->permalink);
-        if ($albumInfo['image_original_url']) {
-            dispatch(new UploadImage($albumInfo['image_original_url'], 'albums'));
-            $albumInfo['image_url'] = 'https://s3.amazonaws.com/assets.heavymetalencyclopedia.com/albums' . parse_url($this->url)['path'];
-        }
-
         $album->fill($albumInfo);
         $album->save();
+
+        dispatch(new UploadImage($album));
     }
 }
