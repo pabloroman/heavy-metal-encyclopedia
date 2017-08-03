@@ -48,6 +48,9 @@
         }
         &--is-open {
             height: auto;
+            &:before {
+                background: transparent;
+            }
         }
     }
 

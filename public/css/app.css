@@ -11559,6 +11559,10 @@ strong {
   height: auto;
 }
 
+.review-body--is-open:before {
+  background: transparent;
+}
+
 .score {
   margin-top: 5px;
 }

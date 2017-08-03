@@ -40,13 +40,17 @@
                     <div class="section-title-wrapper">
                         <h2 class="section-title">Albums</h2>
                     </div>
-                    <ul>
-                    @forelse($albums as $album)
-                        <li><a href="{{ $album->permalink }}">{{ $album->title }}</a></li>
-                    @empty
-                        No albums found matching your query
-                    @endforelse
-                    </ul>
+
+
+
+                    <div class="album-grid">
+                        @forelse($albums as $album)
+                            @include('partials._album-grid-item', ['hasBands' => true])
+                        @empty
+                            No albums found matching your query
+                        @endforelse
+                    </div>
+
                     <hr>
                 </div>
             </div>
