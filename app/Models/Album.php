@@ -15,7 +15,8 @@ class Album extends Model
         'permalink',
         'published_at',
         'title',
-        'image',
+        'image_url',
+        'image_url_original',
         'type',
         'label',
         'average_score',
@@ -57,6 +58,11 @@ class Album extends Model
     public function getTypeSlugAttribute()
     {
         return str_slug($this->type);
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->image_url ?? $this->image_url_original;
     }
 
     public function getReviewCount()

@@ -14,7 +14,8 @@ class Band extends Model
         'permalink',
         'name',
         'logo',
-        'image',
+        'image_url',
+        'image_url_original',
         'country',
         'status',
         'genre',
@@ -39,5 +40,10 @@ class Band extends Model
     public function getPermalinkAttribute()
     {
         return route('showBand', [$this->slug, $this->id]);
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->image_url ?? $this->image_url_original;
     }
 }

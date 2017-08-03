@@ -89,16 +89,16 @@ class MetalArchives
 
         $title = $crawler->filter('.album_name')->text();
         try {
-            $image = $crawler->filter('#cover')->children('img')->attr('src');
+            $image_original_url = $crawler->filter('#cover')->children('img')->attr('src');
         } catch (\Exception $e) {
-            $image = null;
+            $image_original_url = null;
         }
         $type = $crawler->filter('dl.float_left')->children('dd')->eq(1)->text();
         $label = $crawler->filter('dl.float_right')->children('dd')->eq(1)->text();
         $date = $crawler->filter('dl.float_left')->children('dd')->eq(3)->text();
         $published_at = (strlen($date) == 4) ? Carbon::parse($date . '-01-01') : Carbon::parse($date);
-    
-        return compact('title', 'image', 'type', 'published_at', 'label');
+
+        return compact('title', 'image_original_url', 'type', 'published_at', 'label');
     }
 
     private function parseBand($html)
@@ -112,9 +112,9 @@ class MetalArchives
             $logo = null;
         }
         try {
-            $image = $crawler->filter('#photo')->children('img')->attr('src');
+            $image_original_url = $crawler->filter('#photo')->children('img')->attr('src');
         } catch (\Exception $e) {
-            $image = null;
+            $image_original_url = null;
         }
         $country = $crawler->filter('dl.float_left')->children('dd')->eq(1)->text();
         $status = $crawler->filter('dl.float_left')->children('dd')->eq(5)->text();
@@ -122,7 +122,7 @@ class MetalArchives
         $genre = $crawler->filter('dl.float_right')->children('dd')->eq(1)->text();
         $lyrical_themes = $crawler->filter('dl.float_right')->children('dd')->eq(3)->text();
 
-        return compact('name', 'logo', 'image', 'country', 'status', 'founded_at', 'genre', 'lyrical_themes');
+        return compact('name', 'logo', 'image_original_url', 'country', 'status', 'founded_at', 'genre', 'lyrical_themes');
     }
 
     private function getAlbumId($permalink)
