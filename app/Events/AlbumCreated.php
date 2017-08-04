@@ -20,9 +20,13 @@ class AlbumCreated
     public function __construct($album)
     {
         $albumInfo = (new MetalArchives())->getAlbum($album->original_permalink);
-        $album->fill($albumInfo);
-        $album->save();
+        if ($albumInfo == 404) {
+            $album->delete();
+        } else {
+            $album->fill($albumInfo);
+            $album->save();
 
-        dispatch(new UploadImage($album));
+            dispatch(new UploadImage($album));
+        }
     }
 }

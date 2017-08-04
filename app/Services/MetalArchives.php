@@ -4,7 +4,9 @@ namespace App\Services;
 
 use Storage;
 use Carbon\Carbon;
+use GuzzleHttp\Psr7;
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\ClientException as GuzzleException;
 use Symfony\Component\DomCrawler\Crawler;
 
 class MetalArchives
@@ -18,13 +20,13 @@ class MetalArchives
             $page = Storage::get($type . '/' . urlencode($url));
         } else {
             $client = new GuzzleClient(['base_uri' => self::$base_url]);
-            $response = $client->get($url);
-            if (200 === $response->getStatusCode()) {
-                $page = (string) $response->getBody();
-                Storage::put($type . '/' . urlencode($url), $page);
-            } else {
-                throw new Exception('Response: HTTP status ' . $response->getStatusCode() . '. Aborting');
+            try {
+                $response = $client->get($url);
+            } catch (GuzzleException $e) {
+                return ['error' => $e->getResponse()->getStatusCode()];
             }
+            $page = (string) $response->getBody();
+            Storage::put($type . '/' . urlencode($url), $page);
         }
 
         return $page;
@@ -35,12 +37,20 @@ class MetalArchives
         $url = sprintf(self::$band_discography_url, $band_id);
         $page = $this->getUrl($url, 'band_discography');
 
+        if (is_array($page) && isset($page['error'])) {
+            return $page['error'];
+        }
+
         return $this->parseBandDiscography($page);
     }
 
     public function getReview($url)
     {
         $page = $this->getUrl($url, 'reviews');
+
+        if (is_array($page) && isset($page['error'])) {
+            return $page['error'];
+        }
 
         return $this->parseReview($page);
     }
@@ -49,12 +59,20 @@ class MetalArchives
     {
         $page = $this->getUrl($url, 'albums');
 
+        if (is_array($page) && isset($page['error'])) {
+            return $page['error'];
+        }
+
         return $this->parseAlbum($page);
     }
 
     public function getBand($url)
     {
         $page = $this->getUrl($url, 'bands');
+
+        if (is_array($page) && isset($page['error'])) {
+            return $page['error'];
+        }
 
         return $this->parseBand($page);
     }

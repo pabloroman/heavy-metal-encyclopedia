@@ -21,17 +21,21 @@ class BandCreated
     public function __construct($band)
     {
         $bandInfo = (new MetalArchives())->getBand($band->original_permalink);
-        $band->fill($bandInfo);
-        $band->save();
+        if ($bandInfo == 404) {
+            $band->delete();
+        } else {
+            $band->fill($bandInfo);
+            $band->save();
 
-        dispatch(new UploadImage($band));
+            dispatch(new UploadImage($band));
 
-        $bandDiscography = (new MetalArchives())->getBandDiscography($band->id);
+            $bandDiscography = (new MetalArchives())->getBandDiscography($band->id);
 
-        foreach ($bandDiscography as $albumInfo) {
-            $album = Album::firstOrCreate(['id' => $albumInfo['id']], ['permalink' => $albumInfo['permalink']]);
-            if (!$album->bands->contains($band->id)) {
-                $album->bands()->attach($band->id);
+            foreach ($bandDiscography as $albumInfo) {
+                $album = Album::firstOrCreate(['id' => $albumInfo['id']], ['permalink' => $albumInfo['permalink']]);
+                if (!$album->bands->contains($band->id)) {
+                    $album->bands()->attach($band->id);
+                }
             }
         }
     }
