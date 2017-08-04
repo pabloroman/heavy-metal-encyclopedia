@@ -86,44 +86,10 @@
                                 @include('partials._album-grid-item')
                             @endforeach
                         </div>
-<!--
-                    <div class="table-responsive">
-                        <table class="table album-table">
 
-                        @foreach($band->albums as $album)
-                        <tr class="album-row album-row--is-{{ $album->typeSlug }}">
-                            <td>
-                                <div><a href="{{ $album->permalink }}">{{ $album->title }}</a></div>
-                                <div>{{ $album->published_at->format('Y') }} &middot; {{ $album->type }}</div>
-                                <div>{{ $album->label }}</div>
-                            </td>
-                            <td>
-                        @if($album->review_count)
-                        <div class="review-wrapper">
-                            <span class="review-score review-score-{{ round($album->median_score, -1) }}">{{ $album->median_score }}%</span><br>
-                            <span class="review-count">{{ $album->review_count }} {{ str_plural('review', $album->review_count) }}</span>
-                        </div>
-                        @endif
-                            </td>
-                        </tr>
-                        @endforeach
-                        </table>
-                    </div>
--->
                     </section>
                 </div>
 
-<!--
-                <div class="col-md-3">
-                    <div class="section-title-wrapper">
-                        <h3 class="section-title">Latest reviews</h3>
-                    </div>
-
-                    <div class="section-title-wrapper">
-                        <h3 class="section-title">Similar artists</h3>
-                    </div>
-                </div>
--->
             </div>
         </div>
     </section>
