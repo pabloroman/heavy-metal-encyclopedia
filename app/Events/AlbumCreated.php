@@ -19,6 +19,7 @@ class AlbumCreated
      */
     public function __construct($album)
     {
+        $albumInfo = (new MetalArchives())->getAlbum($album->original_permalink);
         $album->fill($albumInfo);
         $album->save();
 

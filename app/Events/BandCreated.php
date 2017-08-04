@@ -20,7 +20,7 @@ class BandCreated
      */
     public function __construct($band)
     {
-        $bandInfo = (new MetalArchives())->getBand($band->permalink);
+        $bandInfo = (new MetalArchives())->getBand($band->original_permalink);
         $band->fill($bandInfo);
         $band->save();
 

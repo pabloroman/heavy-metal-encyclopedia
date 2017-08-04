@@ -43,6 +43,11 @@ class Album extends Model
         return str_slug($this->title, '-');
     }
 
+    public function getOriginalPermalinkAttribute()
+    {
+        return $this->attributes['permalink'];
+    }
+
     public function getPermalinkAttribute()
     {
         return route('showAlbum', [$this->slug, $this->id]);

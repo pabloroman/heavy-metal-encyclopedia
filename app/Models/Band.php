@@ -37,6 +37,11 @@ class Band extends Model
         return str_slug($this->name, '-');
     }
 
+    public function getOriginalPermalinkAttribute()
+    {
+        return $this->attributes['permalink'];
+    }
+
     public function getPermalinkAttribute()
     {
         return route('showBand', [$this->slug, $this->id]);
