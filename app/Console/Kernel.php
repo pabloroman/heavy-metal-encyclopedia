@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\MetalArchives\Importer::class,
         \App\Console\Commands\Albums\CalculateScores::class,
+        \App\Console\Commands\AdHoc::class,
     ];
 
     /**
