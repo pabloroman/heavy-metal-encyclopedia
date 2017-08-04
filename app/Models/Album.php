@@ -29,6 +29,7 @@ class Album extends Model
 
     protected $events = [
         'created' => \App\Events\AlbumCreated::class,
+        'deleted' => \App\Events\AlbumDeleted::class,
     ];
 
     public function bands()
