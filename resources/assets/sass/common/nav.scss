@@ -20,6 +20,7 @@
         @media (max-width: $screen-sm-min) {
             margin: 0;
             flex: 1;
+            padding-right: 0;
         }
 
         .form-control {

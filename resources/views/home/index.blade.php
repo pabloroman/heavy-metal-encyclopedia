@@ -30,13 +30,11 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <section class="section">
-                        <div class="album-grid">
-                        @foreach($trendingAlbums as $album)
-                            @include('partials._album-grid-item', ['hasBands' => true])
-                        @endforeach
-                        </div>
-                    </section>
+                    <div class="album-grid">
+                    @foreach($trendingAlbums as $album)
+                        @include('partials._album-grid-item', ['hasBands' => true])
+                    @endforeach
+                    </div>
                 </div>
             </div>
         </div>
