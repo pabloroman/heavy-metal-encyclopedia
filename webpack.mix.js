@@ -16,8 +16,6 @@ mix.sass('resources/assets/sass/app.scss', 'public/css').options({
       processCssUrls: false
 });
 
-if (mix.inProduction()) {
+if (mix.config.inProduction) {
     mix.version();
 }
-
-mix.disableNotifications();

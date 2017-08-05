@@ -8,7 +8,7 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
-    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body class="@yield('body-class')">
@@ -28,7 +28,7 @@
 
     </div>
 
-    <script src="{{ elixir('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 
     <!-- Scripts -->
     @yield('footer-scripts')
