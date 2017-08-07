@@ -24,6 +24,7 @@ class Band extends Model
         'genre',
         'lyrical_themes',
         'founded_at',
+        'review_count',
     ];
 
     protected $events = [
