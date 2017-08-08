@@ -26,17 +26,23 @@
     <section class="section">
         <div class="container">
             <div class="section-title-wrapper">
-                <h2 class="section-title">Trending albums</h2>
+                <h2 class="section-title">Featured playlists</h2>
+            </div>
+
+            @foreach($playlists as $playlist)
+            <div class="section-title-wrapper">
+                <h3 class="section-title">{{ $playlist->title }}</h2>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="album-grid">
-                    @foreach($trendingAlbums as $album)
+                    @foreach($playlist->albums as $album)
                         @include('partials._album-grid-item', ['hasBands' => true])
                     @endforeach
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
 </div>
