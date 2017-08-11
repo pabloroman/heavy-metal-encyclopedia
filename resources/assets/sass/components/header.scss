@@ -24,13 +24,18 @@ $album-header-height: 200px;
         @include display-flex();
         @include align-items(center);
         @include flex-direction(column);
-        padding: 18px 0;
+        padding: $grid-gutter-width/2 0;
         @media (min-width: $screen-sm-min) {
             @include flex-direction(row);
-            padding: 36px 0;
+            padding: $grid-gutter-width 0;
         }
     }
 
+    &-content {
+        @media (min-width: $screen-sm-min) {
+            padding-left: $band-header-height + $grid-gutter-width;
+        }
+    }
     &-title-wrapper {
         @include display-flex();
         @include align-items(baseline);
@@ -145,6 +150,9 @@ $album-header-height: 200px;
         margin-right: 36px;
         margin-bottom: 0;
         margin-left: 0;
+
+        position: absolute;
+        top: 36px;
     }
 
     &-wrapper {
@@ -160,6 +168,7 @@ $album-header-height: 200px;
 
             .album-header & {
                 max-height: $album-header-height;
+                border-radius: 3px;
             }
         }
 
@@ -172,7 +181,8 @@ $album-header-height: 200px;
         .album-header & {
             height: $album-header-height;
             width: $album-header-height;
-            border-radius: 2px;
+            border-radius: 3px;
+            box-shadow: 0 10px 25px -10px rgba(0,0,0,.7);
         }
     }
 }
@@ -221,6 +231,17 @@ $album-header-height: 200px;
                 font-size: 14px;
                 margin: 0;
             }
+        }
+    }
+
+    &-action {
+        font-size: 34px;
+        color: transparentize($grey, 0.5);
+        &:hover {
+            color: transparentize($grey, 0.3);
+        }
+        &--youtube {
+
         }
     }
 }

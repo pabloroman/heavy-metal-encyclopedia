@@ -60,6 +60,10 @@
                         <h4>Release date</h4>
                         <p>{{ $album->published_at->format('F jS, Y') }}</p>
                     </li>
+                    <li>
+                        <div class="header-metadata-actions">
+                        <a target="_blank" class="header-metadata-action header-metadata-action--youtube" href="{{ $album->youtube_search_link }}"><i class="fa fa-youtube-play"></i></a></div>
+                    </li>
                 </ul>
             </div>
         </div>

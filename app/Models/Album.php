@@ -74,6 +74,13 @@ class Album extends Model
         return $this->image_url ?? $this->image_url_original;
     }
 
+    public function getYoutubeSearchLinkAttribute()
+    {
+        $query = urlencode(implode(' ', $this->bandDetails->pluck('name')->toArray()) . ' ' . $this->title);
+
+        return "https://www.youtube.com/results?search_query=$query";
+    }
+
     public function getReviewCount()
     {
         return $this->reviews->count();
