@@ -15,6 +15,11 @@ class Playlist extends Model
         'image',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function albums()
     {
         return $this->belongsToMany(Album::class);

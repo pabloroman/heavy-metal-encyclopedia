@@ -29,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::model('band', \App\Models\Band::class);
         Route::model('album', \App\Models\Album::class);
+        Route::model('playlist', \App\Models\Playlist::class);
     }
 
     /**
