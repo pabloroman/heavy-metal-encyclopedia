@@ -47,9 +47,18 @@ class AdHoc extends Command
         }
     }
 
+    public function fixEmptyAlbums()
+    {
+        $albums = Album::whereNull('title')->get();
+
+        foreach ($albums as $brokenAlbum) {
+            (new \App\Events\AlbumCreated($brokenAlbum));
+        }
+    }
+
     public function fixEmptyBands()
     {
-        $bands = Band::whereNull('name')->take(10)->get();
+        $bands = Band::whereNull('name')->get();
 
         foreach ($bands as $brokenBand) {
             (new \App\Events\BandCreated($brokenBand));
