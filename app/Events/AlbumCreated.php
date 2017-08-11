@@ -19,7 +19,7 @@ class AlbumCreated
      */
     public function __construct($album)
     {
-        $albumInfo = (new MetalArchives())->getAlbum($album->original_permalink);
+        $albumInfo = (new MetalArchives())->getAlbum($album->id);
         if ($albumInfo == 404) {
             $album->delete();
         } else {

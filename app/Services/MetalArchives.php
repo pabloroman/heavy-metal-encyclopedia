@@ -13,6 +13,7 @@ class MetalArchives
 {
     public static $base_url = 'https://www.metal-archives.com';
     public static $band_discography_url = '/band/discography/id/%s/tab/all';
+    public static $album_url = '/albums/_/_/%s';
 
     private function getUrl($url, $type)
     {
@@ -55,8 +56,13 @@ class MetalArchives
         return $this->parseReview($page);
     }
 
-    public function getAlbum($url)
+    public function getAlbum($url_or_id)
     {
+        if (is_numeric($url_or_id)) {
+            $url = sprintf(self::$album_url, $url_or_id);
+        } else {
+            $url = $url_or_id;
+        }
         $page = $this->getUrl($url, 'albums');
 
         if (is_array($page) && isset($page['error'])) {
