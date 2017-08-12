@@ -7,13 +7,15 @@
 
 @section('content')
 
-    <header class="header band-header">
-
-        <div
+    <header class="header band-header
         @if($band->image)
-            class="header-background header-background--has-image" style="background-image: url({{ $band->image }});"
-        @else
-            class="header-background"
+            header--has-image
+        @endif
+    ">
+
+        <div class="header-background"
+        @if($band->image)
+            style="background-image: url({{ $band->image }});"
         @endif
         ></div>
 

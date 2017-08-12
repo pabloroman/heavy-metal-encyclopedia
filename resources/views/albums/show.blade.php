@@ -10,12 +10,14 @@
 
 @section('content')
 
-    <header class="header album-header">
-        <div
+    <header class="header album-header
         @if($album->image)
-            class="header-background header-background--has-image" style="background-image: url({{ $album->image }});"
-        @else
-            class="header-background"
+            header--has-image
+        @endif
+        ">
+        <div class="header-background"
+        @if($album->image)
+            style="background-image: url({{ $album->image }});"
         @endif
         ></div>
 
