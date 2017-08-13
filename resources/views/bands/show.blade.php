@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', $band->name)
+@section('description', $band->name . ' music, photos, information and reviews in Heavy Metal Encyclopedia')
 @section('body-class', 'body-band')
 @section('navigation')
     @include('layouts._nav')

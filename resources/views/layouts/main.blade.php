@@ -3,12 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name') }}</title>
+    <title>@if(!Request::is('/'))@yield('title') | @endif{{ config('app.name') }}</title>
+
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="robots" content="all">
+    <meta name="keywords" content="metal, heavy metal">
+    <meta name="description" content="@yield('description')">
+    <link rel="canonical" href="{{ URL::current() }}">
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <link rel="dns-prefetch" href="//s3.amazonaws.com/">
 </head>
 
 <body class="@yield('body-class')">

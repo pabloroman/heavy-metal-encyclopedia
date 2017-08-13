@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', $album->title . ' - ' . $album->bands->first()->name)
+@section('description', $album->title . ' by ' . $album->bands->first()->name . ' reviews and information in Heavy Metal Encyclopedia')
 @section('body-class', 'body-album')
 @inject('parser', 'App\Helpers\Parser')
 @inject('albumHelper', 'App\Helpers\Album')

@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', $playlist->title)
+@section('description', $playlist->description)
 @section('navigation')
     @include('layouts._nav')
 @endsection

@@ -1,5 +1,6 @@
 @extends('layouts.main')
 
+@section('description', 'Your source to discover the best metal music')
 @section('body-class', 'body-homepage')
 
 @section('navigation')
