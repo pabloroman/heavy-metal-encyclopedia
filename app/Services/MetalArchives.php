@@ -46,9 +46,9 @@ class MetalArchives
         return $this->parseBandDiscography($page);
     }
 
-    public function getReview($album_id, $review_id)
+    public function getReview($album_id, $author_id)
     {
-        $url = sprintf(self::$review_url, $album_id, $review_id);
+        $url = sprintf(self::$review_url, $album_id, $author_id);
         $page = $this->getUrl($url, 'reviews');
 
         if (is_array($page) && isset($page['error'])) {

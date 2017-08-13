@@ -18,8 +18,12 @@ class ReviewCreated
      */
     public function __construct($review)
     {
-        $reviewInfo = (new MetalArchives())->getReview($review->album_id, $review_id);
-        $review->fill($reviewInfo);
-        $review->save();
+        $reviewInfo = (new MetalArchives())->getReview($review->album_id, $review->author_id);
+        if ($reviewInfo == 404) {
+            $review->delete();
+        } else {
+            $review->fill($reviewInfo);
+            $review->save();
+        }
     }
 }

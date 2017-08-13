@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Album;
 use App\Models\Band;
+use App\Models\Review;
 use App\Services\MetalArchives;
 
 class AdHoc extends Command
@@ -62,6 +63,15 @@ class AdHoc extends Command
 
         foreach ($bands as $brokenBand) {
             (new \App\Events\BandCreated($brokenBand));
+        }
+    }
+
+    public function fixEmptyReviews()
+    {
+        $reviews = Review::whereNull('title')->get();
+
+        foreach ($reviews as $brokenReview) {
+            (new \App\Events\ReviewCreated($brokenReview));
         }
     }
 }
