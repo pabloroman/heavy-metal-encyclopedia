@@ -14,6 +14,7 @@ class MetalArchives
     public static $base_url = 'https://www.metal-archives.com';
     public static $band_discography_url = '/band/discography/id/%s/tab/all';
     public static $album_url = '/albums/_/_/%s';
+    public static $review_url = '/reviews/_/_/%s/_/%s';
 
     private function getUrl($url, $type)
     {
@@ -45,8 +46,9 @@ class MetalArchives
         return $this->parseBandDiscography($page);
     }
 
-    public function getReview($url)
+    public function getReview($album_id, $review_id)
     {
+        $url = sprintf(self::$review_url, $album_id, $review_id);
         $page = $this->getUrl($url, 'reviews');
 
         if (is_array($page) && isset($page['error'])) {

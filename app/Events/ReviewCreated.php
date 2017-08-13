@@ -18,7 +18,7 @@ class ReviewCreated
      */
     public function __construct($review)
     {
-        $reviewInfo = (new MetalArchives())->getReview($review->permalink);
+        $reviewInfo = (new MetalArchives())->getReview($review->album_id, $review_id);
         $review->fill($reviewInfo);
         $review->save();
     }
