@@ -8,6 +8,7 @@
 
     <title>@if(!Request::is('/'))@yield('title') | @endif{{ config('app.name') }}</title>
 
+    <meta name="google-site-verification" content="3C9_Diq982XSryTiVet-CVSVxqSyW-0PXU6dWogpyec" />
     <meta name="referrer" content="no-referrer-when-downgrade">
     <meta name="robots" content="all">
     <meta name="keywords" content="metal, heavy metal">
