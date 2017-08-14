@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use App\Models\Album;
 use App\Models\Band;
 use App\Models\Review;
+use App\Models\Song;
+use App\Models\Lineup;
 use App\Services\MetalArchives;
 
 class AdHoc extends Command
@@ -73,5 +75,28 @@ class AdHoc extends Command
         foreach ($reviews as $brokenReview) {
             (new \App\Events\ReviewCreated($brokenReview));
         }
+    }
+
+    public function addSongsAndLineup()
+    {
+        $bar = $this->output->createProgressBar(Album::count());
+        Album::chunk(100, function ($albums) use ($bar) {
+            foreach ($albums as $album) {
+                $albumInfo = (new MetalArchives())->getAlbum($album->id);
+
+                if (isset($albumInfo['songs'])) {
+                    foreach ($albumInfo['songs'] as $song) {
+                        Song::create(array_merge($song, ['album_id' => $album->id]));
+                    }
+                }
+
+                if (isset($albumInfo['lineup'])) {
+                    foreach ($albumInfo['lineup'] as $lineupItem) {
+                        Lineup::create(array_merge($lineupItem, ['album_id' => $album->id]));
+                    }
+                }
+            }
+        });
+        $bar->finish();
     }
 }

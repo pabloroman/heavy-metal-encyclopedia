@@ -42,6 +42,16 @@ class Album extends Model
         return $this->hasMany(Review::class)->orderBy('published_at', 'desc');
     }
 
+    public function lineup()
+    {
+        return $this->hasMany(Lineup::class);
+    }
+
+    public function songs()
+    {
+        return $this->hasMany(Song::class)->orderBy('disc', 'asc')->orderBy('order', 'asc');
+    }
+
     public function getSlugAttribute()
     {
         return str_slug($this->title, '-');

@@ -124,7 +124,36 @@ class MetalArchives
         $date = $crawler->filter('dl.float_left')->children('dd')->eq(3)->text();
         $published_at = (strlen($date) == 4) ? Carbon::parse($date . '-01-01') : Carbon::parse($date);
 
-        return compact('title', 'image_url_original', 'type', 'published_at', 'label');
+        $songs = [];
+        $currentDisc = 0;
+        if (!$crawler->filter('.discRow')->count()) {
+            $currentDisc = 1;
+        }
+        $songs = $crawler->filter('.table_lyrics tr')->each(function ($item) use (&$currentDisc, $songs) {
+            if ($item->attr('class') == 'discRow') {
+                $currentDisc++;
+            } else {
+                if ($item->children('td')->count() == 4) {
+                    return [
+                        'disc' => $currentDisc,
+                        'order' => trim($item->children('td')->eq(0)->text(), ". \t\n\r\0\x0B"),
+                        'title' => trim($item->children('td')->eq(1)->text()),
+                        'length' => trim($item->children('td')->eq(2)->text()),
+                    ];
+                }
+            }
+            return null;
+        });
+        $songs = array_filter($songs);
+
+        $lineup = $crawler->filter('#album_members_lineup .lineupRow')->each(function ($item) {
+            return [
+                'name' => trim($item->children('td')->eq(0)->text()),
+                'role' => trim($item->children('td')->eq(1)->text()),
+            ];
+        });
+
+        return compact('songs', 'lineup', 'title', 'image_url_original', 'type', 'published_at', 'label');
     }
 
     private function parseBand($html)

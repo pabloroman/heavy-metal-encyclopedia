@@ -96,6 +96,31 @@
                     <div>There are no reviews yet</div>
                     @endforelse
                 </div>
+
+                <div class="col-md-4">
+                    @if($album->songs->count())
+                    <div class="section-title-wrapper">
+                        <h3 class="section-title">{{ $album->title }} track list</h3>
+                    </div>
+                    <table class="table table-condensed">
+                        @foreach($album->songs as $song)
+                        <tr><td>{{ $song->order }}</td><td>{{ $song->title }}</td><td>{{ $song->length }}</td></tr>
+                        @endforeach
+                    </table>
+                    @endif
+
+                    @if($album->lineup->count())
+                    <div class="section-title-wrapper">
+                        <h3 class="section-title">{{ $album->title }} lineup</h3>
+                    </div>
+
+                    <table class="table table-condensed">
+                        @foreach($album->lineup as $lineup)
+                        <tr><td>{{ $lineup->name }}</td><td>{{ $lineup->role }}</td></tr>
+                        @endforeach
+                    </table>
+                    @endif
+                </div>
             </div>
         </div>
     </section>
