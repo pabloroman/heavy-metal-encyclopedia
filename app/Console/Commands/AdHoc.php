@@ -84,17 +84,18 @@ class AdHoc extends Command
             foreach ($albums as $album) {
                 $albumInfo = (new MetalArchives())->getAlbum($album->id);
 
-                if (isset($albumInfo['songs'])) {
+                if (isset($albumInfo['songs']) && !$album->songs->count()) {
                     foreach ($albumInfo['songs'] as $song) {
                         Song::create(array_merge($song, ['album_id' => $album->id]));
                     }
                 }
 
-                if (isset($albumInfo['lineup'])) {
+                if (isset($albumInfo['lineup']) && !$album->lineup->count()) {
                     foreach ($albumInfo['lineup'] as $lineupItem) {
                         Lineup::create(array_merge($lineupItem, ['album_id' => $album->id]));
                     }
                 }
+                $bar->advance();
             }
         });
         $bar->finish();
