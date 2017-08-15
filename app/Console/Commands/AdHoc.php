@@ -82,19 +82,7 @@ class AdHoc extends Command
         $bar = $this->output->createProgressBar(Album::count());
         Album::chunk(100, function ($albums) use ($bar) {
             foreach ($albums as $album) {
-                $albumInfo = (new MetalArchives())->getAlbum($album->id);
-
-                if (isset($albumInfo['songs']) && !$album->songs->count()) {
-                    foreach ($albumInfo['songs'] as $song) {
-                        Song::create(array_merge($song, ['album_id' => $album->id]));
-                    }
-                }
-
-                if (isset($albumInfo['lineup']) && !$album->lineup->count()) {
-                    foreach ($albumInfo['lineup'] as $lineupItem) {
-                        Lineup::create(array_merge($lineupItem, ['album_id' => $album->id]));
-                    }
-                }
+                dispatch(new \App\Jobs\AddSongsAndLineup($album));
                 $bar->advance();
             }
         });
