@@ -16,7 +16,7 @@ class HomeController extends Controller
         $albumCount = Album::count();
         $reviewCount = Review::count();
 
-        $playlists = Playlist::take(5)->get();
+        $playlists = Playlist::take(10)->orderBy('created_at', 'desc')->get();
 
         return view('home.index', compact('bandCount', 'albumCount', 'reviewCount', 'playlists'));
     }
