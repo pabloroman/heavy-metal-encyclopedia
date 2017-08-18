@@ -28,8 +28,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('metal-archives:importer')->monthlyOn(20, '15:00');
     }
 
     /**
