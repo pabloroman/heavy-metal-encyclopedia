@@ -42,10 +42,7 @@ class CalculateScores extends Command
 
         Album::with('reviews')->chunk(100, function ($albums) use ($bar) {
             foreach ($albums as $album) {
-                $album->average_score = $album->getAverageScore();
-                $album->median_score = $album->getMedianScore();
-                $album->review_count = $album->getReviewCount();
-                $album->save();
+                dispatch(new \App\Jobs\UpdateAlbumScore($album));
                 $bar->advance();
             }
         });

@@ -24,6 +24,8 @@ class ReviewCreated
         } else {
             $review->fill($reviewInfo);
             $review->save();
+
+            dispatch(new \App\Jobs\UpdateAlbumScore($review->album));
         }
     }
 }
