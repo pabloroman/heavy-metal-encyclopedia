@@ -100,13 +100,13 @@ $album-header-height: 200px;
 
 .band-header {
     @media (min-width: $screen-sm-min) {
-        height: $band-header-height;
+        min-height: $band-header-height;
     }
 }
 
 .album-header {
     @media (min-width: $screen-sm-min) {
-        height: $album-header-height;
+        min-height: $album-header-height;
     }
 }
 
