@@ -28,30 +28,37 @@
                     <div class="section-title-wrapper">
                         <h2 class="section-title">Bands</h2>
                     </div>
+
+                    <section class="section">
                     <ul>
                     @forelse($bands as $band)
-                        <li><a href="{{ $band->permalink }}">{{ $band->name }}</a> ({{ $band->country }})</h3>
+                        <li><a href="{{ $band->permalink }}">{{ $band->name }}</a> ({{ $band->country }})</li>
                     @empty
                         <li>No bands found matching your query</li>
                     @endforelse
                     </ul>
                     <hr>
+                    </section>
 
                     <div class="section-title-wrapper">
                         <h2 class="section-title">Albums</h2>
                     </div>
 
-
-
-                    <div class="album-grid">
-                        @forelse($albums as $album)
-                            @include('partials._album-grid-item', ['hasBands' => true])
-                        @empty
+                    <section class="section">
+                        @if($albums->count())
+                        <div class="album-grid">
+                            @foreach($albums as $album)
+                                @include('partials._album-grid-item', ['hasBands' => true])
+                            @endforeach
+                        </div>
+                        @else
                             No albums found matching your query
-                        @endforelse
+                        @endif
                     </div>
-
                     <hr>
+                    </section>
+
+
                 </div>
             </div>
         </div>
