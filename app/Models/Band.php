@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Backpack\CRUD\CrudTrait;
 
 class Band extends Model
 {
     use SoftDeletes;
+    use CrudTrait;
 
     public $incrementing = false;
     protected $dates = ['created_at', 'updated_at'];

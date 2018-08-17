@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use Backpack\CRUD\CrudTrait;
 
 class Album extends Model
 {
     use SoftDeletes;
+    use CrudTrait;
 
     public $incrementing = false;
     protected $dates = ['created_at', 'updated_at', 'published_at'];

@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Backpack\CRUD\CrudTrait;
 
 class Review extends Model
 {
+    use CrudTrait;
     use SoftDeletes;
 
     protected $dates = ['created_at', 'updated_at', 'published_at'];
