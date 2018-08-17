@@ -1,4 +1,4 @@
-<nav class="navbar navbar-{{ $position or 'default' }}">
+<nav class="navbar navbar-{{ $position ?? 'default' }}">
     <div class="container">
         <div class="flexy">
         <div class="navbar-header">
