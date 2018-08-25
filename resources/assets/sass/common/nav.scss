@@ -2,6 +2,9 @@
 
     border: 0;
     margin-bottom: 0;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
 
     &-brand {
         color: $white;

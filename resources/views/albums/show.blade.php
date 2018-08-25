@@ -24,6 +24,9 @@
         ></div>
 
         <div class="container">
+
+
+        <div class="container">
            <div class="header-container">
                 @if($album->image)
                 <div class="header-avatar">
@@ -46,6 +49,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </header>
 
     <div class="header-secondary header--has-image">

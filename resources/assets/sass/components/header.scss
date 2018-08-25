@@ -15,6 +15,7 @@ $album-header-height: 200px;
 
     .container {
         position: relative;
+        padding-top: $navbar-height;
         @media (max-width: $screen-sm-min) {
             width: 100%;
         }

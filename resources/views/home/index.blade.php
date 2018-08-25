@@ -7,9 +7,9 @@
 
 <div class="homepage">
 
-    <section class="hero">
+    @include('layouts._nav', ['position' => 'home'])
 
-        @include('layouts._nav', ['position' => 'home'])
+    <section class="hero">
 
         <div class="container">
             <div class="row">
